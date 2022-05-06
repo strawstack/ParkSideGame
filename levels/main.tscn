@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://gc.gd" type="Script" id=1]
 [ext_resource path="res://VarelaRound-Regular.ttf" type="DynamicFontData" id=2]
@@ -34,15 +34,23 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=3]
-size = 18
+[sub_resource type="DynamicFont" id=7]
+size = 20
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
 size = 10
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=9]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
 size = 10
 font_data = ExtResource( 2 )
 
@@ -72,133 +80,284 @@ __meta__ = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="P1_Background" type="ColorRect" parent="CanvasLayer"]
+[node name="p1_container" type="ColorRect" parent="CanvasLayer"]
 margin_right = 88.0
-margin_bottom = 184.0
+margin_bottom = 192.0
+color = Color( 0.266667, 0.266667, 0.266667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="container" type="Node2D" parent="CanvasLayer/p1_container"]
+position = Vector2( 4.08952, 0 )
+
+[node name="p1" type="ColorRect" parent="CanvasLayer/p1_container/container"]
+margin_left = -4.0
+margin_right = 84.0
+margin_bottom = 24.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="p1_container" type="Node2D" parent="CanvasLayer"]
-position = Vector2( 4.08952, 0 )
-
-[node name="p1" type="Label" parent="CanvasLayer/p1_container"]
+[node name="p1" type="Label" parent="CanvasLayer/p1_container/container/p1"]
 margin_right = 88.0
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 7 )
 text = "Player 1"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="task" type="Label" parent="CanvasLayer/p1_container"]
+[node name="task" type="ColorRect" parent="CanvasLayer/p1_container/container"]
+margin_left = -4.08952
 margin_top = 32.0
-margin_right = 88.0
-margin_bottom = 55.0
-custom_fonts/font = SubResource( 3 )
-text = "Task"
-align = 1
+margin_right = 83.9105
+margin_bottom = 56.0
+color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="task_text" type="Label" parent="CanvasLayer/p1_container"]
-margin_top = 56.0
+[node name="task" type="Label" parent="CanvasLayer/p1_container/container/task"]
 margin_right = 88.0
-margin_bottom = 85.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 6 )
+text = "Task"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="task_text" type="ColorRect" parent="CanvasLayer/p1_container/container"]
+margin_left = -4.0
+margin_top = 56.0
+margin_right = 84.0
+margin_bottom = 112.0
+color = Color( 0.2, 0.2, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/p1_container/container/task_text"]
+margin_right = 88.0
+margin_bottom = 56.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="task_text" type="Label" parent="CanvasLayer/p1_container/container/task_text/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 84.0
+margin_bottom = 52.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 8 )
 text = "Move to the trigger area"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ctrls" type="Label" parent="CanvasLayer/p1_container"]
+[node name="ctrls" type="ColorRect" parent="CanvasLayer/p1_container/container"]
+margin_left = -4.08952
 margin_top = 120.0
+margin_right = 83.9105
+margin_bottom = 144.0
+color = Color( 0.2, 0.2, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ctrls" type="Label" parent="CanvasLayer/p1_container/container/ctrls"]
 margin_right = 88.0
-margin_bottom = 143.0
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 9 )
 text = "Controls"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ctrls_text" type="Label" parent="CanvasLayer/p1_container"]
+[node name="ctrls_text" type="ColorRect" parent="CanvasLayer/p1_container/container"]
+margin_left = -4.0
 margin_top = 144.0
-margin_right = 88.0
-margin_bottom = 179.0
-custom_fonts/font = SubResource( 5 )
-text = "W - up, S - down"
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="P2_Background" type="ColorRect" parent="CanvasLayer"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -88.0
+margin_right = 84.0
 margin_bottom = 184.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="p2_container" type="Node2D" parent="CanvasLayer"]
-position = Vector2( 236.907, 0 )
-
-[node name="p1" type="Label" parent="CanvasLayer/p2_container"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/p1_container/container/ctrls_text"]
 margin_right = 88.0
-margin_bottom = 23.0
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 40.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ctrls_text" type="Label" parent="CanvasLayer/p1_container/container/ctrls_text/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 84.0
+margin_bottom = 36.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 10 )
+text = "W - up
+S - down"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p2_container" type="ColorRect" parent="CanvasLayer"]
+margin_left = 232.0
+margin_right = 320.0
+margin_bottom = 192.0
+color = Color( 0.266667, 0.266667, 0.266667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="container" type="Node2D" parent="CanvasLayer/p2_container"]
+position = Vector2( 4.08952, 0 )
+
+[node name="p2" type="ColorRect" parent="CanvasLayer/p2_container/container"]
+margin_left = -4.0
+margin_right = 84.0
+margin_bottom = 24.0
+color = Color( 0.2, 0.2, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p2" type="Label" parent="CanvasLayer/p2_container/container/p2"]
+margin_right = 88.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 7 )
 text = "Player 2"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="task" type="Label" parent="CanvasLayer/p2_container"]
+[node name="task" type="ColorRect" parent="CanvasLayer/p2_container/container"]
+margin_left = -4.08952
 margin_top = 32.0
-margin_right = 88.0
-margin_bottom = 55.0
-custom_fonts/font = SubResource( 3 )
-text = "Task"
-align = 1
+margin_right = 83.9105
+margin_bottom = 56.0
+color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="task_text" type="Label" parent="CanvasLayer/p2_container"]
-margin_top = 56.0
+[node name="task" type="Label" parent="CanvasLayer/p2_container/container/task"]
 margin_right = 88.0
-margin_bottom = 85.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 6 )
+text = "Task"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="task_text" type="ColorRect" parent="CanvasLayer/p2_container/container"]
+margin_left = -4.0
+margin_top = 56.0
+margin_right = 84.0
+margin_bottom = 112.0
+color = Color( 0.2, 0.2, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/p2_container/container/task_text"]
+margin_right = 88.0
+margin_bottom = 56.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="task_text" type="Label" parent="CanvasLayer/p2_container/container/task_text/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 84.0
+margin_bottom = 52.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 8 )
 text = "Move to the trigger area"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ctrls" type="Label" parent="CanvasLayer/p2_container"]
+[node name="ctrls" type="ColorRect" parent="CanvasLayer/p2_container/container"]
+margin_left = -4.08952
 margin_top = 120.0
-margin_right = 88.0
-margin_bottom = 143.0
-custom_fonts/font = SubResource( 3 )
-text = "Controls"
-align = 1
+margin_right = 83.9105
+margin_bottom = 144.0
+color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ctrls_text" type="Label" parent="CanvasLayer/p2_container"]
-margin_top = 144.0
+[node name="ctrls" type="Label" parent="CanvasLayer/p2_container/container/ctrls"]
 margin_right = 88.0
-margin_bottom = 179.0
-custom_fonts/font = SubResource( 5 )
-text = "left/right arrows"
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 9 )
+text = "Controls"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ctrls_text" type="ColorRect" parent="CanvasLayer/p2_container/container"]
+margin_left = -4.0
+margin_top = 144.0
+margin_right = 84.0
+margin_bottom = 184.0
+color = Color( 0.2, 0.2, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/p2_container/container/ctrls_text"]
+margin_right = 88.0
+margin_bottom = 40.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ctrls_text" type="Label" parent="CanvasLayer/p2_container/container/ctrls_text/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 84.0
+margin_bottom = 36.0
+size_flags_vertical = 5
+custom_fonts/font = SubResource( 10 )
+text = "left arrow
+right arrow"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
