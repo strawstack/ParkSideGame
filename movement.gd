@@ -13,8 +13,8 @@ var gc
 var wallTileMap
 
 func _ready():
-	gc = get_tree().get_root().get_node("mainMenu")
-	wallTileMap = gc.getWallTileMap()
+	gc = get_tree().get_root().get_node("main")
+	wallTileMap = $prims/Tilemap
 	currentTile = (position - offset) / cellSize
 	targetTile = currentTile
 
