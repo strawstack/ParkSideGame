@@ -8,35 +8,90 @@ var cellSize = Vector2(16, 16)
 var isMoving = false 
 var currentTile = Vector2()
 var targetTile  = Vector2()
+var blockInput = false
 
 var gc
 var wallTileMap
 
+signal move_completed
+
 func _ready():
 	gc = get_tree().get_root().get_node("main")
 	wallTileMap = $prims/Tilemap
+	init()
+
+func init():
 	currentTile = (position - offset) / cellSize
 	targetTile = currentTile
+	$AnimatedSprite.set_speed_scale(0.5)
+	$AnimatedSprite.play("idle")
+
+func moveRight(targetTile):
+	if not $AnimatedSprite.playing or $AnimatedSprite.get_animation() != "right" or ($AnimatedSprite.get_animation() == "right" and $AnimatedSprite.is_flipped_h() != false):
+		$AnimatedSprite.set_speed_scale(1.5)
+		$AnimatedSprite.set_flip_h(false)
+		$AnimatedSprite.play("right")
+	var t = Vector2(targetTile.x + 1, targetTile.y)
+	if not isCollision(t):
+		targetTile.x += 1
+		movePlayer(targetTile)
+	return targetTile
+
+func moveDown(targetTile):
+	if not $AnimatedSprite.playing or $AnimatedSprite.get_animation() != "down":
+		$AnimatedSprite.set_speed_scale(1.5)
+		$AnimatedSprite.play("down")
+	var t = Vector2(targetTile.x, targetTile.y + 1)
+	if not isCollision(t):
+		targetTile.y += 1
+		movePlayer(targetTile)
+	return targetTile
+
+func moveLeft(targetTile):
+	if not $AnimatedSprite.playing or $AnimatedSprite.get_animation() != "right" or ($AnimatedSprite.get_animation() == "right" and $AnimatedSprite.is_flipped_h() != true):
+		$AnimatedSprite.set_flip_h(true)
+		$AnimatedSprite.set_speed_scale(1.5)
+		$AnimatedSprite.play("right")
+	var t = Vector2(targetTile.x - 1, targetTile.y)
+	if not isCollision(t):
+		targetTile.x -= 1
+		movePlayer(targetTile)
+	return targetTile
+	
+func moveUp(targetTile):
+	if not $AnimatedSprite.playing or $AnimatedSprite.get_animation() != "up":
+		$AnimatedSprite.set_speed_scale(1.5)
+		$AnimatedSprite.play("up")
+	var t = Vector2(targetTile.x, targetTile.y - 1)
+	if not isCollision(t):
+		targetTile.y -= 1
+		movePlayer(targetTile)
+	return targetTile
 
 func _process(delta):
 	if not isMoving:
-		if Input.is_action_pressed("right"):
-			var t = Vector2(targetTile.x + 1, targetTile.y)
-			if not isCollision(t):
-				targetTile.x += 1
-				movePlayer(targetTile)
-			
-		if Input.is_action_pressed("left"):
-			targetTile.x -= 1
-			movePlayer(targetTile)
-			
-		if Input.is_action_pressed("down"):
-			targetTile.y += 1
-			movePlayer(targetTile)
-			
-		if Input.is_action_pressed("up"):
-			targetTile.y -= 1
-			movePlayer(targetTile)
+		var anyAction = false
+		if not blockInput:
+			if Input.is_action_pressed("right"):
+				anyAction = true
+				targetTile = moveRight(targetTile)
+				
+			if Input.is_action_pressed("left"):
+				anyAction = true
+				targetTile = moveLeft(targetTile)
+
+			if Input.is_action_pressed("down"):
+				anyAction = true
+				targetTile = moveDown(targetTile)
+
+			if Input.is_action_pressed("up"):
+				anyAction = true
+				targetTile = moveUp(targetTile)
+
+		if not anyAction:
+			$AnimatedSprite.set_flip_h(false)
+			$AnimatedSprite.set_speed_scale(0.5)
+			$AnimatedSprite.play("idle")
 
 func isCollision(targetTile):
 	# return wallTileMap.get_cellv(targetTile) != -1
@@ -56,3 +111,4 @@ func movePlayer(targetTile):
 func _on_Tween_tween_completed(object, key):
 	isMoving = false
 	currentTile = targetTile
+	emit_signal("move_completed")

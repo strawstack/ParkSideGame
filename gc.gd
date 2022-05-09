@@ -47,6 +47,7 @@ func _process(delta):
 func getWallTileMap():
 	return $wall
 
+
 func _on_Area2D_body_entered(body):
 	setPlayerTask(1, "Exit the room")
 	setPlayerTask(2, "Exit the room")
@@ -83,4 +84,3 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func showCanvasLayer(isShown):
 	for child in $CanvasLayer.get_children():
 		child.set_visible(isShown)
-	

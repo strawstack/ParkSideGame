@@ -115,6 +115,8 @@ func prims():
 		tileMap.set_cellv(nextDoor, -1)
 		extraDoorsLocal -= 1
 	
+	tileMap.update_bitmask_region()
+	
 func getRandomDoor(doors):
 	var doorIndex = rng.randi_range(0, len(doors) - 1)
 	var temp = doors[doorIndex]

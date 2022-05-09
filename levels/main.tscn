@@ -34,23 +34,23 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=3]
 size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 10
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 14
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=8]
-size = 10
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 14
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=7]
 size = 10
 font_data = ExtResource( 2 )
 
@@ -67,7 +67,6 @@ anims/FadeToBlack = SubResource( 1 )
 anims/FadeToWhite = SubResource( 2 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.921569, 0.921569, 0.921569, 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -103,7 +102,7 @@ __meta__ = {
 [node name="p1" type="Label" parent="CanvasLayer/p1_container/container/p1"]
 margin_right = 88.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 3 )
 text = "Player 1"
 align = 1
 __meta__ = {
@@ -123,7 +122,7 @@ __meta__ = {
 [node name="task" type="Label" parent="CanvasLayer/p1_container/container/task"]
 margin_right = 88.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Task"
 align = 1
 valign = 1
@@ -158,7 +157,7 @@ margin_top = 4.0
 margin_right = 84.0
 margin_bottom = 52.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 text = "Move to the trigger area"
 autowrap = true
 __meta__ = {
@@ -178,7 +177,7 @@ __meta__ = {
 [node name="ctrls" type="Label" parent="CanvasLayer/p1_container/container/ctrls"]
 margin_right = 88.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 text = "Controls"
 align = 1
 valign = 1
@@ -213,7 +212,7 @@ margin_top = 4.0
 margin_right = 84.0
 margin_bottom = 36.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 7 )
 text = "W - up
 S - down"
 autowrap = true
@@ -245,7 +244,7 @@ __meta__ = {
 [node name="p2" type="Label" parent="CanvasLayer/p2_container/container/p2"]
 margin_right = 88.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 3 )
 text = "Player 2"
 align = 1
 __meta__ = {
@@ -265,7 +264,7 @@ __meta__ = {
 [node name="task" type="Label" parent="CanvasLayer/p2_container/container/task"]
 margin_right = 88.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Task"
 align = 1
 valign = 1
@@ -300,7 +299,7 @@ margin_top = 4.0
 margin_right = 84.0
 margin_bottom = 52.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 text = "Move to the trigger area"
 autowrap = true
 __meta__ = {
@@ -320,7 +319,7 @@ __meta__ = {
 [node name="ctrls" type="Label" parent="CanvasLayer/p2_container/container/ctrls"]
 margin_right = 88.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 6 )
 text = "Controls"
 align = 1
 valign = 1
@@ -355,7 +354,7 @@ margin_top = 4.0
 margin_right = 84.0
 margin_bottom = 36.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 7 )
 text = "left arrow
 right arrow"
 autowrap = true
