@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://VarelaRound-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://script/TextBox.gd" type="Script" id=2]
 [ext_resource path="res://levels/intro.gd" type="Script" id=3]
+[ext_resource path="res://player_anim/player_static.png" type="Texture" id=4]
+[ext_resource path="res://player_anim/player_grand.png" type="Texture" id=5]
 [ext_resource path="res://art/tile.png" type="Texture" id=6]
+[ext_resource path="res://art/arrow.png" type="Texture" id=7]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tile.png 0"
@@ -52,7 +55,7 @@ __meta__ = {
 }
 
 [node name="CharacterTimer" type="Timer" parent="TextBox"]
-wait_time = 0.1
+wait_time = 0.04
 
 [node name="ColorRect_Border" type="ColorRect" parent="TextBox"]
 margin_left = 8.0
@@ -81,6 +84,7 @@ margin_right = 300.0
 margin_bottom = 56.0
 custom_fonts/font = SubResource( 2 )
 text = "Testing"
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -106,5 +110,27 @@ text = "Intro"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Player_static" type="Sprite" parent="."]
+position = Vector2( 96, 112 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="Player_arrow" type="Sprite" parent="."]
+modulate = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+position = Vector2( 96, 96 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="Grand_static" type="Sprite" parent="."]
+position = Vector2( 216, 112 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="Grand_arrow" type="Sprite" parent="."]
+modulate = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+position = Vector2( 216, 96 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
 [connection signal="text_complete" from="TextBox" to="." method="_on_TextBox_text_complete"]
 [connection signal="timeout" from="TextBox/CharacterTimer" to="TextBox" method="_on_CharacterTimer_timeout"]
