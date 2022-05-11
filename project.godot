@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Parkside"
 run/main_scene="res://levels/main.tscn"
-config/icon="res://icon.png"
+config/icon="res://art/icon.png"
 
 [display]
 

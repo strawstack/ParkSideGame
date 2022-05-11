@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/overpass_horizontal.png-255a5f3f8636cf7008b0612dd8b4e527.stex"
+path="res://.import/tile.png-73ea3a56b72978ec382fa65704c5659d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://overpass_horizontal.png"
-dest_files=[ "res://.import/overpass_horizontal.png-255a5f3f8636cf7008b0612dd8b4e527.stex" ]
+source_file="res://art/tile.png"
+dest_files=[ "res://.import/tile.png-73ea3a56b72978ec382fa65704c5659d.stex" ]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://gc.gd" type="Script" id=1]
+[ext_resource path="res://script/gc.gd" type="Script" id=1]
 [ext_resource path="res://VarelaRound-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://bensound-relaxing.ogg" type="AudioStream" id=3]
 

@@ -1,23 +1,26 @@
 [gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://VarelaRound-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://books_auto_tile.png" type="Texture" id=2]
-[ext_resource path="res://mainMenu.gd" type="Script" id=3]
-[ext_resource path="res://prims.gd" type="Script" id=4]
-[ext_resource path="res://carpet_auto_tile.png" type="Texture" id=5]
-[ext_resource path="res://stone_grid.png" type="Texture" id=6]
-[ext_resource path="res://stone_rough.png" type="Texture" id=7]
-[ext_resource path="res://player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://art/books_auto_tile.png" type="Texture" id=2]
+[ext_resource path="res://script/mainMenu.gd" type="Script" id=3]
+[ext_resource path="res://script/prims.gd" type="Script" id=4]
+[ext_resource path="res://art/carpet_auto_tile.png" type="Texture" id=5]
+[ext_resource path="res://art/stone_grid.png" type="Texture" id=6]
+[ext_resource path="res://art/stone_rough.png" type="Texture" id=7]
+[ext_resource path="res://helperScenes/player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ghost_anim/ghost3.png" type="Texture" id=9]
 [ext_resource path="res://ghost_anim/ghost2.png" type="Texture" id=10]
 [ext_resource path="res://ghost_anim/ghost1.png" type="Texture" id=11]
-[ext_resource path="res://movement.gd" type="Script" id=12]
+[ext_resource path="res://script/movement.gd" type="Script" id=12]
 [ext_resource path="res://ghost_anim/ghost5.png" type="Texture" id=13]
 [ext_resource path="res://ghost_anim/ghost10.png" type="Texture" id=14]
 [ext_resource path="res://ghost_anim/ghost6.png" type="Texture" id=15]
 [ext_resource path="res://ghost_anim/ghost4.png" type="Texture" id=16]
-[ext_resource path="res://light.png" type="Texture" id=17]
+[ext_resource path="res://art/light.png" type="Texture" id=17]
 [ext_resource path="res://ghost_anim/ghost9.png" type="Texture" id=18]
+
+
+
 
 [sub_resource type="TileSet" id=1]
 0/name = "stone_grid.png 0"

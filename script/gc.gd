@@ -17,6 +17,8 @@ var scene_list = [
 	"res://levels/boss.tscn"
 ]
 
+signal fade_to_white_complete
+
 func _ready():
 	# Navigate to the main menu on initial load of game
 	var isSlow = false
@@ -46,7 +48,6 @@ func _process(delta):
 
 func getWallTileMap():
 	return $wall
-
 
 func _on_Area2D_body_entered(body):
 	setPlayerTask(1, "Exit the room")
@@ -80,6 +81,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "FadeToBlack":
 		swapScenes()
 		$AnimationPlayer.play("FadeToWhite")
+	elif anim_name == "FadeToWhite":
+		emit_signal("fade_to_white_complete")
 
 func showCanvasLayer(isShown):
 	for child in $CanvasLayer.get_children():

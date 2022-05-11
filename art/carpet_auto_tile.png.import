@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bug.png-5b371b6cc67249c474bbcd761966e466.stex"
+path="res://.import/carpet_auto_tile.png-540945a8f10b125e5cfcf82851d99de7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bug.png"
-dest_files=[ "res://.import/bug.png-5b371b6cc67249c474bbcd761966e466.stex" ]
+source_file="res://art/carpet_auto_tile.png"
+dest_files=[ "res://.import/carpet_auto_tile.png-540945a8f10b125e5cfcf82851d99de7.stex" ]
 
 [params]
 

@@ -15,7 +15,6 @@ func _ready():
 	$nextLabel.visible = false
 	visible = false
 	isAnimating = false
-	
 
 func showText(_textList):
 	if isAnimating == false:
@@ -31,6 +30,7 @@ func showText(_textList):
 func nextSentance():
 	textListIndex += 1
 	if textListIndex >= textList.size():
+		visible = false
 		emit_signal("text_complete")
 	else:
 		$Label.set_text(textList[textListIndex])
@@ -44,7 +44,7 @@ func _process(delta):
 		if isAnimating:
 			$CharacterTimer.stop()
 			isAnimating = false
-			charVisible = textList[textListIndex].size()
+			charVisible = textList[textListIndex].length()
 			$Label.set_visible_characters(charVisible)
 			promtNext()
 		else:
@@ -55,7 +55,7 @@ func _process(delta):
 # Show 'Enter >' or 'Enter.' prompt
 func promtNext():
 	$nextLabel.visible = true
-	if textListIndex == textList.size() - 2:
+	if textListIndex == textList.size() - 1:
 		$nextLabel.set_text("Enter.")
 	else:
 		$nextLabel.set_text("Enter >")
@@ -63,7 +63,7 @@ func promtNext():
 func _on_CharacterTimer_timeout():
 	charVisible += 1
 	$Label.set_visible_characters(charVisible)
-	if charVisible == textList[textListIndex].size():
+	if charVisible == textList[textListIndex].length():
 		$CharacterTimer.stop()
 		isAnimating = false
 		promtNext()

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bookshelves.png-1d462eb74bca9d6ecb18e3f7af945216.stex"
+path="res://.import/overpass_vertical.png-0315e1418267936b334b2d1186f2b7b2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bookshelves.png"
-dest_files=[ "res://.import/bookshelves.png-1d462eb74bca9d6ecb18e3f7af945216.stex" ]
+source_file="res://art/overpass_vertical.png"
+dest_files=[ "res://.import/overpass_vertical.png-0315e1418267936b334b2d1186f2b7b2.stex" ]
 
 [params]
 

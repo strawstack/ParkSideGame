@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stone_rough.png-1c229d59f4c996dc845c1a79207f1847.stex"
+path="res://.import/books_auto_tile.png-64d96cbc982c37c9aa206cba7255d1cc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stone_rough.png"
-dest_files=[ "res://.import/stone_rough.png-1c229d59f4c996dc845c1a79207f1847.stex" ]
+source_file="res://art/books_auto_tile.png"
+dest_files=[ "res://.import/books_auto_tile.png-64d96cbc982c37c9aa206cba7255d1cc.stex" ]
 
 [params]
 

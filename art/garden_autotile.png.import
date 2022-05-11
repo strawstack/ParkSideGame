@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/garden_autotile.png-9648ebee66722a7407c3375403352565.stex"
+path="res://.import/garden_autotile.png-49e6c47e7930c700da62a669415b621b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://garden_autotile.png"
-dest_files=[ "res://.import/garden_autotile.png-9648ebee66722a7407c3375403352565.stex" ]
+source_file="res://art/garden_autotile.png"
+dest_files=[ "res://.import/garden_autotile.png-49e6c47e7930c700da62a669415b621b.stex" ]
 
 [params]
 

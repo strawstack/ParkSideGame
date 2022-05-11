@@ -1,6 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://books_auto_tile.png" type="Texture" id=1]
+[ext_resource path="res://art/books_auto_tile.png" type="Texture" id=1]
+
 
 [sub_resource type="TileSet" id=3]
 0/name = "books_auto_tile.png 0"
