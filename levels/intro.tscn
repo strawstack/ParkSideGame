@@ -2,7 +2,7 @@
 
 [ext_resource path="res://VarelaRound-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://script/TextBox.gd" type="Script" id=2]
-[ext_resource path="res://levels/intro.gd" type="Script" id=3]
+[ext_resource path="res://script/intro.gd" type="Script" id=3]
 [ext_resource path="res://player_anim/player_static.png" type="Texture" id=4]
 [ext_resource path="res://player_anim/player_grand.png" type="Texture" id=5]
 [ext_resource path="res://art/tile.png" type="Texture" id=6]

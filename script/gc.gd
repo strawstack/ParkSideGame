@@ -17,13 +17,15 @@ var scene_list = [
 	"res://levels/boss.tscn"
 ]
 
+var wallMap = null
+
 signal fade_to_white_complete
 
 func _ready():
 	# Navigate to the main menu on initial load of game
 	var isSlow = false
 	changeScene("res://levels/mainMenu.tscn", isSlow)
-	showCanvasLayer(false)
+	toggleCanvasLayer(false)
 
 func _process(delta):
 	var press = false
@@ -46,8 +48,14 @@ func _process(delta):
 		print(scene_list[debug_index])
 		changeScene(scene_list[debug_index], isSlow)
 
-func getWallTileMap():
-	return $wall
+func setWallMap(_wallMap):
+	wallMap = _wallMap
+
+func isWall(v):
+	if wallMap == null:
+		return false
+	else:
+		return wallMap.get_cellv(v) != -1
 
 func _on_Area2D_body_entered(body):
 	setPlayerTask(1, "Exit the room")
@@ -56,9 +64,9 @@ func _on_Area2D_body_entered(body):
 func setPlayerTask(playerNumber, text):
 	var label = null
 	if playerNumber == 1:
-		label = get_node("CanvasLayer/p1_container/task_text")
+		label = get_node("CanvasLayer/p1_container/container/task_text/MarginContainer/task_text")
 	else:
-		label = $CanvasLayer/p2_container/task_text
+		label = get_node("CanvasLayer/p2_container/container/task_text/MarginContainer/task_text")
 	label.set_text(text)
 
 func changeScene(newScene, isSlow = true):
@@ -84,6 +92,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	elif anim_name == "FadeToWhite":
 		emit_signal("fade_to_white_complete")
 
-func showCanvasLayer(isShown):
+func toggleCanvasLayer(isShown):
 	for child in $CanvasLayer.get_children():
 		child.set_visible(isShown)

@@ -80,7 +80,7 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="p1_container" type="ColorRect" parent="CanvasLayer"]
-margin_right = 88.0
+margin_right = 80.0
 margin_bottom = 192.0
 color = Color( 0.266667, 0.266667, 0.266667, 1 )
 __meta__ = {
@@ -92,7 +92,7 @@ position = Vector2( 4.08952, 0 )
 
 [node name="p1" type="ColorRect" parent="CanvasLayer/p1_container/container"]
 margin_left = -4.0
-margin_right = 84.0
+margin_right = 76.0
 margin_bottom = 24.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
@@ -100,8 +100,8 @@ __meta__ = {
 }
 
 [node name="p1" type="Label" parent="CanvasLayer/p1_container/container/p1"]
-margin_right = 88.0
-margin_bottom = 24.0
+margin_right = 80.0
+margin_bottom = 25.0
 custom_fonts/font = SubResource( 3 )
 text = "Player 1"
 align = 1
@@ -110,9 +110,9 @@ __meta__ = {
 }
 
 [node name="task" type="ColorRect" parent="CanvasLayer/p1_container/container"]
-margin_left = -4.08952
+margin_left = -4.0
 margin_top = 32.0
-margin_right = 83.9105
+margin_right = 76.0
 margin_bottom = 56.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
@@ -120,7 +120,7 @@ __meta__ = {
 }
 
 [node name="task" type="Label" parent="CanvasLayer/p1_container/container/task"]
-margin_right = 88.0
+margin_right = 80.0
 margin_bottom = 24.0
 custom_fonts/font = SubResource( 4 )
 text = "Task"
@@ -133,7 +133,7 @@ __meta__ = {
 [node name="task_text" type="ColorRect" parent="CanvasLayer/p1_container/container"]
 margin_left = -4.0
 margin_top = 56.0
-margin_right = 84.0
+margin_right = 76.0
 margin_bottom = 112.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
@@ -141,7 +141,7 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/p1_container/container/task_text"]
-margin_right = 88.0
+margin_right = 80.0
 margin_bottom = 56.0
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
@@ -154,7 +154,7 @@ __meta__ = {
 [node name="task_text" type="Label" parent="CanvasLayer/p1_container/container/task_text/MarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 84.0
+margin_right = 76.0
 margin_bottom = 52.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 5 )
@@ -165,9 +165,9 @@ __meta__ = {
 }
 
 [node name="ctrls" type="ColorRect" parent="CanvasLayer/p1_container/container"]
-margin_left = -4.08952
+margin_left = -4.0
 margin_top = 120.0
-margin_right = 83.9105
+margin_right = 76.0
 margin_bottom = 144.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
@@ -175,7 +175,7 @@ __meta__ = {
 }
 
 [node name="ctrls" type="Label" parent="CanvasLayer/p1_container/container/ctrls"]
-margin_right = 88.0
+margin_right = 80.0
 margin_bottom = 24.0
 custom_fonts/font = SubResource( 6 )
 text = "Controls"
@@ -188,7 +188,7 @@ __meta__ = {
 [node name="ctrls_text" type="ColorRect" parent="CanvasLayer/p1_container/container"]
 margin_left = -4.0
 margin_top = 144.0
-margin_right = 84.0
+margin_right = 76.0
 margin_bottom = 184.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
@@ -196,7 +196,7 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/p1_container/container/ctrls_text"]
-margin_right = 88.0
+margin_right = 80.0
 margin_bottom = 40.0
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
@@ -209,7 +209,7 @@ __meta__ = {
 [node name="ctrls_text" type="Label" parent="CanvasLayer/p1_container/container/ctrls_text/MarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 84.0
+margin_right = 76.0
 margin_bottom = 36.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 7 )
@@ -221,7 +221,7 @@ __meta__ = {
 }
 
 [node name="p2_container" type="ColorRect" parent="CanvasLayer"]
-margin_left = 232.0
+margin_left = 240.0
 margin_right = 320.0
 margin_bottom = 192.0
 color = Color( 0.266667, 0.266667, 0.266667, 1 )
@@ -234,7 +234,7 @@ position = Vector2( 4.08952, 0 )
 
 [node name="p2" type="ColorRect" parent="CanvasLayer/p2_container/container"]
 margin_left = -4.0
-margin_right = 84.0
+margin_right = 76.0
 margin_bottom = 24.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
@@ -242,8 +242,8 @@ __meta__ = {
 }
 
 [node name="p2" type="Label" parent="CanvasLayer/p2_container/container/p2"]
-margin_right = 88.0
-margin_bottom = 24.0
+margin_right = 80.0
+margin_bottom = 25.0
 custom_fonts/font = SubResource( 3 )
 text = "Player 2"
 align = 1
@@ -252,9 +252,9 @@ __meta__ = {
 }
 
 [node name="task" type="ColorRect" parent="CanvasLayer/p2_container/container"]
-margin_left = -4.08952
+margin_left = -4.0
 margin_top = 32.0
-margin_right = 83.9105
+margin_right = 76.0
 margin_bottom = 56.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
@@ -262,7 +262,7 @@ __meta__ = {
 }
 
 [node name="task" type="Label" parent="CanvasLayer/p2_container/container/task"]
-margin_right = 88.0
+margin_right = 80.0
 margin_bottom = 24.0
 custom_fonts/font = SubResource( 4 )
 text = "Task"
@@ -275,7 +275,7 @@ __meta__ = {
 [node name="task_text" type="ColorRect" parent="CanvasLayer/p2_container/container"]
 margin_left = -4.0
 margin_top = 56.0
-margin_right = 84.0
+margin_right = 76.0
 margin_bottom = 112.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
@@ -283,7 +283,7 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/p2_container/container/task_text"]
-margin_right = 88.0
+margin_right = 80.0
 margin_bottom = 56.0
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
@@ -296,7 +296,7 @@ __meta__ = {
 [node name="task_text" type="Label" parent="CanvasLayer/p2_container/container/task_text/MarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 84.0
+margin_right = 76.0
 margin_bottom = 52.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 5 )
@@ -307,9 +307,9 @@ __meta__ = {
 }
 
 [node name="ctrls" type="ColorRect" parent="CanvasLayer/p2_container/container"]
-margin_left = -4.08952
+margin_left = -4.0
 margin_top = 120.0
-margin_right = 83.9105
+margin_right = 76.0
 margin_bottom = 144.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
@@ -317,7 +317,7 @@ __meta__ = {
 }
 
 [node name="ctrls" type="Label" parent="CanvasLayer/p2_container/container/ctrls"]
-margin_right = 88.0
+margin_right = 80.0
 margin_bottom = 24.0
 custom_fonts/font = SubResource( 6 )
 text = "Controls"
@@ -330,7 +330,7 @@ __meta__ = {
 [node name="ctrls_text" type="ColorRect" parent="CanvasLayer/p2_container/container"]
 margin_left = -4.0
 margin_top = 144.0
-margin_right = 84.0
+margin_right = 76.0
 margin_bottom = 184.0
 color = Color( 0.2, 0.2, 0.2, 1 )
 __meta__ = {
@@ -338,7 +338,7 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/p2_container/container/ctrls_text"]
-margin_right = 88.0
+margin_right = 80.0
 margin_bottom = 40.0
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
@@ -351,7 +351,7 @@ __meta__ = {
 [node name="ctrls_text" type="Label" parent="CanvasLayer/p2_container/container/ctrls_text/MarginContainer"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 84.0
+margin_right = 76.0
 margin_bottom = 36.0
 size_flags_vertical = 5
 custom_fonts/font = SubResource( 7 )

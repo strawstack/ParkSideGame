@@ -54,11 +54,24 @@ var gc
 func _ready():
 	gc = get_tree().get_root().get_node("main")
 	gc.connect("fade_to_white_complete", self, "_fade_to_white_complete")
+	$Player_arrow.visible = false
+	$Grand_arrow.visible = false
 
 func _process(delta):
 	pass
 
 func nextSpeaker():
+	var showPlayerArrow = true
+	$Player_static.scale = Vector2(2, 2)
+	$Grand_static.scale = Vector2(2, 2)
+	if textIndex % 2 == 0:
+		$Player_static.scale = Vector2(2.2, 2.2)
+		showPlayerArrow = true
+	else:
+		$Grand_static.scale = Vector2(2.2, 2.2)
+		showPlayerArrow = false
+	$Player_arrow.visible = showPlayerArrow
+	$Grand_arrow.visible = not showPlayerArrow
 	$TextBox.showText(textList[textIndex])
 
 func _fade_to_white_complete():

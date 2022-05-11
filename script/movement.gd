@@ -17,7 +17,6 @@ signal move_completed
 
 func _ready():
 	gc = get_tree().get_root().get_node("main")
-	wallTileMap = $prims/Tilemap
 	init()
 
 func init():
@@ -94,8 +93,7 @@ func _process(delta):
 			$AnimatedSprite.play("idle")
 
 func isCollision(targetTile):
-	# return wallTileMap.get_cellv(targetTile) != -1
-	return false
+	return gc.isWall(targetTile)
 
 func movePlayer(targetTile):
 	isMoving = true
