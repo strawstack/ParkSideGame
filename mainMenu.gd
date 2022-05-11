@@ -13,7 +13,7 @@ func _on_credits_pressed():
 	gc.changeScene("res://levels/credits.tscn")
 
 func _on_start_pressed():
-	gc.changeScene("res://levels/one.tscn")
+	gc.changeScene("res://levels/intro.tscn")
 
 # 0 up
 # 1 right
