@@ -18,6 +18,7 @@ var scene_list = [
 ]
 
 var wallMap = null
+var currentScene = null
 
 signal fade_to_white_complete
 
@@ -45,7 +46,6 @@ func _process(delta):
 			debug_index = 0
 		
 		var isSlow = false
-		print(scene_list[debug_index])
 		changeScene(scene_list[debug_index], isSlow)
 
 func setWallMap(_wallMap):
@@ -75,6 +75,14 @@ func changeScene(newScene, isSlow = true):
 		$AnimationPlayer.play("FadeToBlack")
 	else:
 		swapScenes()
+
+func setCurrentScene(scene):
+	currentScene = scene
+
+func nextGhost(ghostSymbol):
+	if currentScene == null:
+		return false
+	return currentScene.nextGhost(ghostSymbol)
 
 func swapScenes():
 	if targetScene != null:
