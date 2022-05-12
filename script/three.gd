@@ -1,16 +1,42 @@
 extends Node
 
+var gc
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var ghostIndex = 0
+var ghostList = ["1", "2", "3"]
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	gc = get_tree().get_root().get_node("main")
+	gc.setWallMap($Walls)
+	var text = "Chase the ghosts in a hidden order!"
+	gc.setPlayerTask(1, text)
+	gc.setPlayerTask(2, text)
+	gc.toggleCanvasLayer(true)
+	gc.setCurrentScene(self)
 
+func nextGhost(ghostSymbol):
+	if ghostList[ghostIndex] != ghostSymbol:
+		ghostIndex = 0
+		$Ghost.visible = true
+		$Ghost/GhostArea2D.set_monitoring(true)
+		$Ghost2.visible = true
+		$Ghost2/GhostArea2D.set_monitoring(true)
+		$Ghost3.visible = true
+		$Ghost3/GhostArea2D.set_monitoring(true)
+		return false
+	
+	ghostIndex += 1
+	
+	if ghostIndex == ghostList.size():
+		sceneComplete()
+	
+	return true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func sceneComplete():
+	# Remove doors
+	$Walls.set_cell(9, 6, -1)
+	$Walls.set_cell(10, 6, -1)
+	var text = "Exit through the door."
+	gc.setPlayerTask(1, text)
+	gc.setPlayerTask(2, text)
+	$Doors.visible = false

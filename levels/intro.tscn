@@ -132,5 +132,4 @@ modulate = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
 position = Vector2( 216, 96 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
-[connection signal="text_complete" from="TextBox" to="." method="_on_TextBox_text_complete"]
 [connection signal="timeout" from="TextBox/CharacterTimer" to="TextBox" method="_on_CharacterTimer_timeout"]

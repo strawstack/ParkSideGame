@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://VarelaRound-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://art/stone_grid.png" type="Texture" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://script/warp.gd" type="Script" id=23]
 [ext_resource path="res://art/stairs.png" type="Texture" id=24]
 [ext_resource path="res://script/three.gd" type="Script" id=25]
+[ext_resource path="res://script/GhostArea2D.gd" type="Script" id=26]
 
 [sub_resource type="TileSet" id=1]
 0/name = "stone_grid.png 0"
@@ -106,6 +107,32 @@
 0/shapes = [  ]
 0/z_index = 0
 
+[sub_resource type="TileSet" id=6]
+0/name = "tile.png 0"
+0/texture = ExtResource( 18 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 8.0
+
+[sub_resource type="DynamicFont" id=9]
+size = 24
+font_data = ExtResource( 1 )
+
 [sub_resource type="CircleShape2D" id=4]
 radius = 7.11073
 
@@ -131,47 +158,6 @@ animations = [ {
 "name": "down",
 "speed": 5.0
 } ]
-
-[sub_resource type="Animation" id=6]
-resource_name = "GhostBob"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Ghost:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -10 ), Vector2( 0, -15 ), Vector2( 0, -10 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "ShadowPulse"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Shadow:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
-}
-
-[sub_resource type="CircleShape2D" id=8]
-radius = 8.0
-
-[sub_resource type="DynamicFont" id=9]
-size = 6
-font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=10]
 resource_name = "GhostBob"
@@ -207,7 +193,14 @@ tracks/0/keys = {
 "values": [ Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="CircleShape2D" id=12]
+radius = 8.0
+
+[sub_resource type="DynamicFont" id=13]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=14]
 resource_name = "GhostBob"
 length = 2.0
 loop = true
@@ -224,7 +217,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -10 ), Vector2( 0, -15 ), Vector2( 0, -10 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=15]
 resource_name = "ShadowPulse"
 length = 2.0
 loop = true
@@ -241,31 +234,39 @@ tracks/0/keys = {
 "values": [ Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
 }
 
-[sub_resource type="TileSet" id=14]
-0/name = "tile.png 0"
-0/texture = ExtResource( 18 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 16, 16 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
+[sub_resource type="Animation" id=16]
+resource_name = "GhostBob"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10 ), Vector2( 0, -15 ), Vector2( 0, -10 ) ]
+}
 
-[sub_resource type="CircleShape2D" id=15]
-radius = 8.0
-
-[sub_resource type="CircleShape2D" id=16]
-radius = 8.0
-
-[sub_resource type="DynamicFont" id=17]
-size = 24
-font_data = ExtResource( 1 )
+[sub_resource type="Animation" id=17]
+resource_name = "ShadowPulse"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shadow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
+}
 
 [node name="three" type="Node"]
 script = ExtResource( 25 )
@@ -280,13 +281,13 @@ tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0,
 tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 5, 0, 1, 6, 0, 196610, 7, 0, 196610, 8, 0, 196610, 9, 0, 196610, 10, 0, 196610, 11, 0, 2, 12, 0, 196610, 13, 0, 196610, 14, 0, 3, 65541, 0, 65536, 65547, 0, 65536, 65550, 0, 65536, 131077, 0, 65536, 131081, 0, 0, 131083, 0, 131072, 131086, 0, 65536, 196613, 0, 65536, 196617, 0, 65536, 196622, 0, 65536, 262149, 0, 65537, 262150, 0, 196610, 262151, 0, 196610, 262152, 0, 2, 262153, 0, 131074, 262154, 0, 196610, 262155, 0, 2, 262156, 0, 196611, 262158, 0, 65536, 327685, 0, 65536, 327688, 0, 65536, 327691, 0, 65536, 327694, 0, 65536, 393221, 0, 65536, 393224, 0, 131072, 393227, 0, 65536, 393229, 0, 196609, 393230, 0, 65539, 458757, 0, 65536, 458763, 0, 131072, 458766, 0, 65536, 524293, 0, 65536, 524302, 0, 65536, 589829, 0, 65537, 589830, 0, 196610, 589831, 0, 196610, 589832, 0, 196611, 589834, 0, 196609, 589835, 0, 196611, 589837, 0, 196609, 589838, 0, 65539, 655365, 0, 65536, 655374, 0, 65536, 720901, 0, 131073, 720902, 0, 196610, 720903, 0, 196610, 720904, 0, 196611, 720907, 0, 196609, 720908, 0, 196610, 720909, 0, 196610, 720910, 0, 131075 )
+tile_data = PoolIntArray( 5, 0, 1, 6, 0, 196610, 7, 0, 196610, 8, 0, 196610, 9, 0, 196610, 10, 0, 196610, 11, 0, 2, 12, 0, 196610, 13, 0, 196610, 14, 0, 3, 65541, 0, 65536, 65547, 0, 65536, 65550, 0, 65536, 131077, 0, 65536, 131081, 0, 0, 131083, 0, 131072, 131086, 0, 65536, 196613, 0, 65536, 196617, 0, 65536, 196622, 0, 65536, 262149, 0, 65537, 262150, 0, 196610, 262151, 0, 196610, 262152, 0, 2, 262153, 0, 131074, 262154, 0, 196610, 262155, 0, 2, 262156, 0, 196611, 262158, 0, 65536, 327685, 0, 65536, 327688, 0, 65536, 327691, 0, 65536, 327694, 0, 65536, 393221, 0, 65536, 393224, 0, 131072, 393227, 0, 65536, 393229, 0, 196609, 393230, 0, 131075, 458757, 0, 65536, 458763, 0, 131072, 524293, 0, 65536, 589829, 0, 65537, 589830, 0, 196610, 589831, 0, 196610, 589832, 0, 196611, 589834, 0, 196609, 589835, 0, 196611, 589837, 0, 196609, 589838, 0, 3, 655365, 0, 65536, 655374, 0, 65536, 720901, 0, 131073, 720902, 0, 196610, 720903, 0, 196610, 720904, 0, 196610, 720905, 0, 196610, 720906, 0, 196610, 720907, 0, 196610, 720908, 0, 196610, 720909, 0, 196610, 720910, 0, 131075 )
 
 [node name="Carpet" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 65543, 0, 196609, 65544, 0, 196610, 65545, 0, 196610, 65546, 0, 3, 65548, 0, 196609, 65549, 0, 196611, 131082, 0, 65536, 196614, 0, 196609, 196615, 0, 196610, 196616, 0, 196611, 196618, 0, 131072, 196621, 0, 0, 262157, 0, 65536, 327686, 0, 196609, 327687, 0, 3, 327692, 0, 1, 327693, 0, 131075, 393223, 0, 131072, 393228, 0, 65536, 458764, 0, 65536, 524295, 0, 196609, 524296, 0, 196610, 524297, 0, 196610, 524298, 0, 196610, 524299, 0, 196610, 524300, 0, 131075, 655367, 0, 196609, 655368, 0, 196610, 655369, 0, 196610, 655370, 0, 196611, 655372, 0, 196609, 655373, 0, 196611 )
+tile_data = PoolIntArray( 65543, 0, 196609, 65544, 0, 196610, 65545, 0, 196610, 65546, 0, 3, 65548, 0, 196609, 65549, 0, 196611, 131082, 0, 65536, 196614, 0, 196609, 196615, 0, 196610, 196616, 0, 196611, 196618, 0, 131072, 196621, 0, 0, 262157, 0, 65536, 327686, 0, 196609, 327687, 0, 3, 327692, 0, 1, 327693, 0, 131075, 393223, 0, 131072, 393225, 0, 8, 393226, 0, 11, 393228, 0, 65536, 458761, 0, 65544, 458762, 0, 131083, 458764, 0, 65540, 458765, 0, 10, 458766, 0, 10, 458767, 0, 11, 524295, 0, 196609, 524296, 0, 196610, 524297, 0, 196613, 524298, 0, 196614, 524299, 0, 196610, 524300, 0, 196613, 524301, 0, 196617, 524302, 0, 196617, 524303, 0, 196619, 655367, 0, 196609, 655368, 0, 196610, 655369, 0, 196610, 655370, 0, 196611, 655372, 0, 196609, 655373, 0, 196611 )
 
 [node name="Doors" type="Node2D" parent="."]
 position = Vector2( 160, 104 )
@@ -298,6 +299,54 @@ texture = ExtResource( 21 )
 [node name="LeftDoor" type="Sprite" parent="Doors"]
 position = Vector2( -8, 0 )
 texture = ExtResource( 19 )
+
+[node name="Walls" type="TileMap" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.27451 )
+tile_set = SubResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65541, 0, 0, 65547, 0, 0, 65550, 0, 0, 131077, 0, 0, 131081, 0, 0, 131083, 0, 0, 131086, 0, 0, 196613, 0, 0, 196617, 0, 0, 196622, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262158, 0, 0, 327685, 0, 0, 327688, 0, 0, 327691, 0, 0, 327694, 0, 0, 393221, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393229, 0, 0, 393230, 0, 0, 458757, 0, 0, 458763, 0, 0, 458766, 0, 0, 524293, 0, 0, 524302, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589834, 0, 0, 589835, 0, 0, 589837, 0, 0, 589838, 0, 0, 655365, 0, 0, 655374, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0 )
+
+[node name="Warp" type="Node2D" parent="."]
+position = Vector2( 160, 88 )
+script = ExtResource( 23 )
+sceneName = "res://levels/garden.tscn"
+
+[node name="Area1" type="Area2D" parent="Warp"]
+position = Vector2( -8, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Warp/Area1"]
+shape = SubResource( 7 )
+
+[node name="Area2" type="Area2D" parent="Warp"]
+position = Vector2( 8, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Warp/Area2"]
+shape = SubResource( 8 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 88.0
+margin_top = 160.0
+margin_right = 155.0
+margin_bottom = 190.0
+custom_fonts/font = SubResource( 9 )
+text = "Three"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stairs" type="Node2D" parent="."]
+modulate = Color( 0.305882, 0.184314, 0.12549, 1 )
+position = Vector2( 160, 88 )
+
+[node name="Left" type="Sprite" parent="Stairs"]
+position = Vector2( -8, 0 )
+texture = ExtResource( 24 )
+
+[node name="Right" type="Sprite" parent="Stairs"]
+position = Vector2( 8, 0 )
+texture = ExtResource( 24 )
 
 [node name="player" type="KinematicBody2D" parent="."]
 position = Vector2( 216, 120 )
@@ -320,21 +369,22 @@ speed_scale = 0.5
 [node name="Tween" type="Tween" parent="player"]
 
 [node name="Ghost" type="Node2D" parent="."]
-position = Vector2( 120, 40 )
+position = Vector2( 120, 136 )
 script = ExtResource( 20 )
 
 [node name="GhostBob" type="AnimationPlayer" parent="Ghost"]
 autoplay = "GhostBob"
-anims/GhostBob = SubResource( 6 )
+anims/GhostBob = SubResource( 10 )
 
 [node name="ShadowPulse" type="AnimationPlayer" parent="Ghost"]
 autoplay = "ShadowPulse"
-anims/ShadowPulse = SubResource( 7 )
+anims/ShadowPulse = SubResource( 11 )
 
 [node name="GhostArea2D" type="Area2D" parent="Ghost"]
+script = ExtResource( 26 )
 
 [node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="Ghost/GhostArea2D"]
-shape = SubResource( 8 )
+shape = SubResource( 12 )
 
 [node name="Shadow" type="Sprite" parent="Ghost"]
 modulate = Color( 1, 1, 1, 0.313726 )
@@ -347,33 +397,36 @@ position = Vector2( 0, -10 )
 texture = ExtResource( 17 )
 
 [node name="Symbol" type="Label" parent="Ghost/Ghost"]
+visible = false
 modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
 margin_left = -8.0
 margin_top = -5.0
 margin_right = 8.0
 margin_bottom = 3.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 13 )
+text = "1"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Ghost2" type="Node2D" parent="."]
-position = Vector2( 120, 136 )
+position = Vector2( 120, 40 )
 script = ExtResource( 20 )
 
 [node name="GhostBob" type="AnimationPlayer" parent="Ghost2"]
 autoplay = "GhostBob"
-anims/GhostBob = SubResource( 10 )
+anims/GhostBob = SubResource( 14 )
 
 [node name="ShadowPulse" type="AnimationPlayer" parent="Ghost2"]
 autoplay = "ShadowPulse"
-anims/ShadowPulse = SubResource( 11 )
+anims/ShadowPulse = SubResource( 15 )
 
 [node name="GhostArea2D" type="Area2D" parent="Ghost2"]
+script = ExtResource( 26 )
 
 [node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="Ghost2/GhostArea2D"]
-shape = SubResource( 8 )
+shape = SubResource( 12 )
 
 [node name="Shadow" type="Sprite" parent="Ghost2"]
 modulate = Color( 1, 1, 1, 0.313726 )
@@ -386,12 +439,14 @@ position = Vector2( 0, -10 )
 texture = ExtResource( 17 )
 
 [node name="Symbol" type="Label" parent="Ghost2/Ghost"]
+visible = false
 modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
 margin_left = -8.0
 margin_top = -5.0
 margin_right = 8.0
 margin_bottom = 3.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 13 )
+text = "2"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -403,16 +458,17 @@ script = ExtResource( 20 )
 
 [node name="GhostBob" type="AnimationPlayer" parent="Ghost3"]
 autoplay = "GhostBob"
-anims/GhostBob = SubResource( 12 )
+anims/GhostBob = SubResource( 16 )
 
 [node name="ShadowPulse" type="AnimationPlayer" parent="Ghost3"]
 autoplay = "ShadowPulse"
-anims/ShadowPulse = SubResource( 13 )
+anims/ShadowPulse = SubResource( 17 )
 
 [node name="GhostArea2D" type="Area2D" parent="Ghost3"]
+script = ExtResource( 26 )
 
 [node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="Ghost3/GhostArea2D"]
-shape = SubResource( 8 )
+shape = SubResource( 12 )
 
 [node name="Shadow" type="Sprite" parent="Ghost3"]
 modulate = Color( 1, 1, 1, 0.313726 )
@@ -425,66 +481,21 @@ position = Vector2( 0, -10 )
 texture = ExtResource( 17 )
 
 [node name="Symbol" type="Label" parent="Ghost3/Ghost"]
+visible = false
 modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
 margin_left = -8.0
 margin_top = -5.0
 margin_right = 8.0
 margin_bottom = 3.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 13 )
+text = "3"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Walls" type="TileMap" parent="."]
-modulate = Color( 1, 1, 1, 0.27451 )
-tile_set = SubResource( 14 )
-cell_size = Vector2( 16, 16 )
-format = 1
-tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65541, 0, 0, 65547, 0, 0, 65550, 0, 0, 131077, 0, 0, 131081, 0, 0, 131083, 0, 0, 131086, 0, 0, 196613, 0, 0, 196617, 0, 0, 196622, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262158, 0, 0, 327685, 0, 0, 327688, 0, 0, 327691, 0, 0, 327694, 0, 0, 393221, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393229, 0, 0, 393230, 0, 0, 458757, 0, 0, 458763, 0, 0, 458766, 0, 0, 524293, 0, 0, 524302, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589834, 0, 0, 589835, 0, 0, 589837, 0, 0, 589838, 0, 0, 655365, 0, 0, 655374, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0 )
-
-[node name="Warp" type="Node2D" parent="."]
-position = Vector2( 160, 88 )
-script = ExtResource( 23 )
-sceneName = "res://levels/two.tscn"
-
-[node name="Area1" type="Area2D" parent="Warp"]
-position = Vector2( -8, 0 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Warp/Area1"]
-shape = SubResource( 15 )
-
-[node name="Area2" type="Area2D" parent="Warp"]
-position = Vector2( 8, 0 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Warp/Area2"]
-shape = SubResource( 16 )
-
-[node name="Label" type="Label" parent="."]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 63.0
-margin_bottom = 38.0
-custom_fonts/font = SubResource( 17 )
-text = "Three"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Stairs" type="Node2D" parent="."]
-modulate = Color( 0.305882, 0.184314, 0.12549, 1 )
-position = Vector2( 160, 88 )
-
-[node name="Left" type="Sprite" parent="Stairs"]
-position = Vector2( -8, 0 )
-texture = ExtResource( 24 )
-
-[node name="Right" type="Sprite" parent="Stairs"]
-position = Vector2( 8, 0 )
-texture = ExtResource( 24 )
-[connection signal="tween_completed" from="player/Tween" to="player" method="_on_Tween_tween_completed"]
-[connection signal="body_entered" from="Ghost/GhostArea2D" to="Ghost" method="_on_GhostArea2D_body_entered"]
-[connection signal="body_entered" from="Ghost2/GhostArea2D" to="Ghost2" method="_on_GhostArea2D_body_entered"]
-[connection signal="body_entered" from="Ghost3/GhostArea2D" to="Ghost3" method="_on_GhostArea2D_body_entered"]
 [connection signal="body_entered" from="Warp/Area1" to="Warp" method="_on_Area1_body_entered"]
 [connection signal="body_entered" from="Warp/Area2" to="Warp" method="_on_Area2_body_entered"]
+[connection signal="tween_completed" from="player/Tween" to="player" method="_on_Tween_tween_completed"]
+[connection signal="body_entered" from="Ghost/GhostArea2D" to="Ghost/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="body_entered" from="Ghost2/GhostArea2D" to="Ghost2/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="body_entered" from="Ghost3/GhostArea2D" to="Ghost3/GhostArea2D" method="_on_GhostArea2D_body_entered"]
