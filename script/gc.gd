@@ -57,6 +57,14 @@ func isWall(v):
 	else:
 		return wallMap.get_cellv(v) != -1
 
+func playerBlock(value):
+	if currentScene != null:
+		currentScene.playerBlock(value)
+
+func playerDies():
+	if currentScene != null:
+		currentScene.playerDies()
+
 func _on_Area2D_body_entered(body):
 	setPlayerTask(1, "Exit the room")
 	setPlayerTask(2, "Exit the room")

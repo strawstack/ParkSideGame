@@ -107,7 +107,7 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="TileSet" id=6]
+[sub_resource type="TileSet" id=4]
 0/name = "tile.png 0"
 0/texture = ExtResource( 18 )
 0/tex_offset = Vector2( 0, 0 )
@@ -123,20 +123,20 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=5]
 radius = 8.0
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=6]
 radius = 8.0
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=7]
 size = 24
 font_data = ExtResource( 1 )
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=8]
 radius = 7.11073
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 16 ) ],
 "loop": true,
@@ -303,7 +303,7 @@ texture = ExtResource( 19 )
 [node name="Walls" type="TileMap" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0.27451 )
-tile_set = SubResource( 6 )
+tile_set = SubResource( 4 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65541, 0, 0, 65547, 0, 0, 65550, 0, 0, 131077, 0, 0, 131081, 0, 0, 131083, 0, 0, 131086, 0, 0, 196613, 0, 0, 196617, 0, 0, 196622, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262158, 0, 0, 327685, 0, 0, 327688, 0, 0, 327691, 0, 0, 327694, 0, 0, 393221, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393229, 0, 0, 393230, 0, 0, 458757, 0, 0, 458763, 0, 0, 458766, 0, 0, 524293, 0, 0, 524302, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589834, 0, 0, 589835, 0, 0, 589837, 0, 0, 589838, 0, 0, 655365, 0, 0, 655374, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0 )
@@ -317,20 +317,20 @@ sceneName = "res://levels/garden.tscn"
 position = Vector2( -8, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Warp/Area1"]
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="Area2" type="Area2D" parent="Warp"]
 position = Vector2( 8, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Warp/Area2"]
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 88.0
 margin_top = 160.0
 margin_right = 155.0
 margin_bottom = 190.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 7 )
 text = "Three"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -358,11 +358,11 @@ texture = ExtResource( 22 )
 shadow_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-shape = SubResource( 4 )
+shape = SubResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="player"]
 position = Vector2( 0, -12 )
-frames = SubResource( 5 )
+frames = SubResource( 9 )
 animation = "idle"
 speed_scale = 0.5
 
