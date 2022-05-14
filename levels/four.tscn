@@ -1,9 +1,9 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://VarelaRound-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://script/four.gd" type="Script" id=2]
 [ext_resource path="res://art/tile.png" type="Texture" id=3]
-[ext_resource path="res://art/purple_stone_auto_tile.png" type="Texture" id=4]
+[ext_resource path="res://helperScenes/PurpleWalls.tscn" type="PackedScene" id=4]
 [ext_resource path="res://art/stone_grid.png" type="Texture" id=5]
 [ext_resource path="res://art/stone_rough.png" type="Texture" id=6]
 [ext_resource path="res://lava_anim/lava_tile4.png" type="Texture" id=7]
@@ -25,6 +25,11 @@
 [ext_resource path="res://player_anim/player6.png" type="Texture" id=23]
 [ext_resource path="res://player_anim/player9.png" type="Texture" id=24]
 [ext_resource path="res://player_anim/player8.png" type="Texture" id=25]
+[ext_resource path="res://script/GhostArea2D.gd" type="Script" id=26]
+[ext_resource path="res://script/MoveGhost.gd" type="Script" id=27]
+[ext_resource path="res://art/shadow.png" type="Texture" id=28]
+[ext_resource path="res://art/ghost.png" type="Texture" id=29]
+[ext_resource path="res://script/BadGhost.gd" type="Script" id=30]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -62,32 +67,7 @@ radius = 8.0
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="TileSet" id=4]
-0/name = "purple_stone_auto_tile.png 0"
-0/texture = ExtResource( 4 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 192, 64 )
-0/tile_mode = 1
-0/autotile/bitmask_mode = 1
-0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 144, Vector2( 0, 1 ), 146, Vector2( 0, 2 ), 18, Vector2( 0, 3 ), 16, Vector2( 1, 0 ), 176, Vector2( 1, 1 ), 178, Vector2( 1, 2 ), 50, Vector2( 1, 3 ), 48, Vector2( 2, 0 ), 184, Vector2( 2, 1 ), 186, Vector2( 2, 2 ), 58, Vector2( 2, 3 ), 56, Vector2( 3, 0 ), 152, Vector2( 3, 1 ), 154, Vector2( 3, 2 ), 26, Vector2( 3, 3 ), 24, Vector2( 4, 0 ), 187, Vector2( 4, 1 ), 434, Vector2( 4, 2 ), 182, Vector2( 4, 3 ), 250, Vector2( 5, 0 ), 440, Vector2( 5, 1 ), 510, Vector2( 5, 2 ), 447, Vector2( 5, 3 ), 62, Vector2( 6, 0 ), 248, Vector2( 6, 1 ), 507, Vector2( 6, 2 ), 255, Vector2( 6, 3 ), 59, Vector2( 7, 0 ), 190, Vector2( 7, 1 ), 218, Vector2( 7, 2 ), 155, Vector2( 7, 3 ), 442, Vector2( 8, 0 ), 432, Vector2( 8, 1 ), 438, Vector2( 8, 2 ), 446, Vector2( 8, 3 ), 54, Vector2( 9, 0 ), 506, Vector2( 9, 1 ), 254, Vector2( 9, 2 ), 511, Vector2( 9, 3 ), 63, Vector2( 10, 0 ), 504, Vector2( 10, 2 ), 443, Vector2( 10, 3 ), 191, Vector2( 11, 0 ), 216, Vector2( 11, 1 ), 251, Vector2( 11, 2 ), 219, Vector2( 11, 3 ), 27 ]
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 16, 16 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/priority_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
-
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 9 ) ],
 "loop": true,
@@ -100,13 +80,13 @@ animations = [ {
 "speed": 2.0
 } ]
 
-[sub_resource type="CircleShape2D" id=12]
+[sub_resource type="CircleShape2D" id=5]
 radius = 8.0
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=6]
 radius = 7.11073
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 23 ), ExtResource( 18 ), ExtResource( 25 ) ],
 "loop": true,
@@ -129,7 +109,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="TileSet" id=6]
+[sub_resource type="TileSet" id=8]
 0/name = "tile.png 0"
 0/texture = ExtResource( 3 )
 0/tex_offset = Vector2( 0, 0 )
@@ -145,7 +125,21 @@ animations = [ {
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="CircleShape2D" id=9]
+radius = 8.0
+
+[sub_resource type="DynamicFont" id=10]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 8.0
+
+[sub_resource type="DynamicFont" id=12]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=13]
 size = 24
 font_data = ExtResource( 1 )
 
@@ -155,7 +149,7 @@ script = ExtResource( 2 )
 [node name="Warp" type="Node2D" parent="."]
 position = Vector2( 80, 40 )
 script = ExtResource( 13 )
-sceneName = "res://levels/two.tscn"
+sceneName = "res://levels/five.tscn"
 
 [node name="Area1" type="Area2D" parent="Warp"]
 position = Vector2( -8, 0 )
@@ -176,11 +170,7 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 1, 0, 65549, 0, 0, 65550, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 1, 0, 196617, 0, 0, 196618, 1, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 1, 0, 327685, 1, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 1, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 1, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 1, 0, 458766, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 589829, 1, 0, 589830, 1, 0, 589831, 0, 0, 589832, 0, 0, 589833, 1, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 655365, 1, 0, 655366, 1, 0, 655367, 0, 0, 655368, 0, 0, 655369, 1, 0, 655370, 0, 0, 655371, 0, 0, 655372, 1, 0, 655373, 0, 0, 655374, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0 )
 
-[node name="PurpleWalls" type="TileMap" parent="."]
-tile_set = SubResource( 4 )
-cell_size = Vector2( 16, 16 )
-format = 1
-tile_data = PoolIntArray( 5, 0, 1, 6, 0, 196610, 7, 0, 196610, 8, 0, 196610, 9, 0, 196610, 10, 0, 196610, 11, 0, 196610, 12, 0, 196610, 13, 0, 196610, 14, 0, 3, 65541, 0, 131072, 65550, 0, 131072, 262149, 0, 1, 262150, 0, 196611, 262152, 0, 196609, 262153, 0, 3, 262156, 0, 8, 262157, 0, 10, 262158, 0, 11, 327685, 0, 65536, 327689, 0, 65536, 327692, 0, 65544, 327693, 0, 131081, 327694, 0, 131083, 393221, 0, 65537, 393222, 0, 196610, 393223, 0, 196611, 393225, 0, 131072, 393228, 0, 196616, 393229, 0, 196617, 393230, 0, 131079, 458757, 0, 65536, 458766, 0, 65536, 524293, 0, 65536, 524298, 0, 1, 524299, 0, 196611, 524302, 0, 65536, 589829, 0, 65536, 589834, 0, 65536, 589838, 0, 65536, 655365, 0, 65536, 655370, 0, 65536, 655374, 0, 65536, 720901, 0, 131073, 720902, 0, 196610, 720903, 0, 196610, 720904, 0, 196610, 720905, 0, 196610, 720906, 0, 131075, 720909, 0, 196609, 720910, 0, 131075 )
+[node name="PurpleWalls" parent="." instance=ExtResource( 4 )]
 
 [node name="LavaTiles" type="Node2D" parent="."]
 
@@ -189,14 +179,14 @@ position = Vector2( 200, 136 )
 script = ExtResource( 14 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="LavaTiles/LavaTile"]
-frames = SubResource( 11 )
+frames = SubResource( 4 )
 animation = "close"
 frame = 5
 
 [node name="Area2D" type="Area2D" parent="LavaTiles/LavaTile"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LavaTiles/LavaTile/Area2D"]
-shape = SubResource( 12 )
+shape = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="LavaTiles/LavaTile"]
 wait_time = 3.0
@@ -206,16 +196,84 @@ position = Vector2( 216, 136 )
 script = ExtResource( 14 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="LavaTiles/LavaTile2"]
-frames = SubResource( 11 )
+frames = SubResource( 4 )
 animation = "close"
 frame = 5
 
 [node name="Area2D" type="Area2D" parent="LavaTiles/LavaTile2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LavaTiles/LavaTile2/Area2D"]
-shape = SubResource( 12 )
+shape = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="LavaTiles/LavaTile2"]
+wait_time = 3.0
+
+[node name="LavaTile3" type="Node2D" parent="LavaTiles"]
+position = Vector2( 120, 72 )
+script = ExtResource( 14 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="LavaTiles/LavaTile3"]
+frames = SubResource( 4 )
+animation = "close"
+frame = 5
+
+[node name="Area2D" type="Area2D" parent="LavaTiles/LavaTile3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LavaTiles/LavaTile3/Area2D"]
+shape = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="LavaTiles/LavaTile3"]
+wait_time = 3.0
+
+[node name="LavaTile4" type="Node2D" parent="LavaTiles"]
+position = Vector2( 120, 88 )
+script = ExtResource( 14 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="LavaTiles/LavaTile4"]
+frames = SubResource( 4 )
+animation = "close"
+frame = 5
+
+[node name="Area2D" type="Area2D" parent="LavaTiles/LavaTile4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LavaTiles/LavaTile4/Area2D"]
+shape = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="LavaTiles/LavaTile4"]
+wait_time = 3.0
+
+[node name="LavaTile5" type="Node2D" parent="LavaTiles"]
+position = Vector2( 104, 104 )
+script = ExtResource( 14 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="LavaTiles/LavaTile5"]
+frames = SubResource( 4 )
+animation = "close"
+frame = 5
+
+[node name="Area2D" type="Area2D" parent="LavaTiles/LavaTile5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LavaTiles/LavaTile5/Area2D"]
+shape = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="LavaTiles/LavaTile5"]
+wait_time = 3.0
+
+[node name="LavaTile6" type="Node2D" parent="LavaTiles"]
+position = Vector2( 120, 104 )
+script = ExtResource( 14 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="LavaTiles/LavaTile6"]
+frames = SubResource( 4 )
+animation = "close"
+frame = 5
+
+[node name="Area2D" type="Area2D" parent="LavaTiles/LavaTile6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LavaTiles/LavaTile6/Area2D"]
+shape = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="LavaTiles/LavaTile6"]
 wait_time = 3.0
 
 [node name="player" type="KinematicBody2D" parent="."]
@@ -228,30 +286,236 @@ texture = ExtResource( 22 )
 shadow_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-shape = SubResource( 9 )
+shape = SubResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="player"]
 position = Vector2( 0, -12 )
-frames = SubResource( 10 )
+frames = SubResource( 7 )
 animation = "idle"
 speed_scale = 0.5
 
 [node name="Tween" type="Tween" parent="player"]
 
 [node name="Walls" type="TileMap" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0.27451 )
-tile_set = SubResource( 6 )
+tile_set = SubResource( 8 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65541, 0, 0, 65550, 0, 0, 65551, 0, 0, 131077, 0, 0, 131086, 0, 0, 131087, 0, 0, 196613, 0, 0, 196622, 0, 0, 196623, 0, 0, 262149, 0, 0, 262150, 0, 0, 262152, 0, 0, 262153, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 327685, 0, 0, 327689, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393225, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 458757, 0, 0, 458766, 0, 0, 524293, 0, 0, 524298, 0, 0, 524299, 0, 0, 524302, 0, 0, 589829, 0, 0, 589834, 0, 0, 589838, 0, 0, 655365, 0, 0, 655370, 0, 0, 655374, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0 )
+tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65541, 0, 0, 65550, 0, 0, 131077, 0, 0, 131086, 0, 0, 196613, 0, 0, 196622, 0, 0, 262149, 0, 0, 262150, 0, 0, 262152, 0, 0, 262153, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 327685, 0, 0, 327689, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 393221, 0, 0, 393224, 0, 0, 393225, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 458757, 0, 0, 458760, 0, 0, 458766, 0, 0, 524293, 0, 0, 524298, 0, 0, 524299, 0, 0, 524302, 0, 0, 589829, 0, 0, 589834, 0, 0, 589838, 0, 0, 655365, 0, 0, 655370, 0, 0, 655374, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0 )
+
+[node name="MoveGhost" type="Node2D" parent="."]
+position = Vector2( 120, 24 )
+script = ExtResource( 27 )
+moveTime = 1
+
+[node name="MoveLocation" type="Node2D" parent="MoveGhost"]
+position = Vector2( 0, 32 )
+
+[node name="Tween" type="Tween" parent="MoveGhost"]
+
+[node name="Body" type="Node2D" parent="MoveGhost"]
+
+[node name="GhostArea2D" type="Area2D" parent="MoveGhost/Body"]
+script = ExtResource( 26 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="MoveGhost/Body/GhostArea2D"]
+shape = SubResource( 9 )
+
+[node name="Shadow" type="Sprite" parent="MoveGhost/Body"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 28 )
+
+[node name="Ghost" type="Sprite" parent="MoveGhost/Body"]
+modulate = Color( 1, 1, 1, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 29 )
+
+[node name="Symbol" type="Label" parent="MoveGhost/Body/Ghost"]
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 10 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveGhost3" type="Node2D" parent="."]
+position = Vector2( 200, 56 )
+script = ExtResource( 27 )
+moveTime = 2
+
+[node name="MoveLocation" type="Node2D" parent="MoveGhost3"]
+position = Vector2( 0, -32 )
+
+[node name="Tween" type="Tween" parent="MoveGhost3"]
+
+[node name="Body" type="Node2D" parent="MoveGhost3"]
+
+[node name="GhostArea2D" type="Area2D" parent="MoveGhost3/Body"]
+script = ExtResource( 26 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="MoveGhost3/Body/GhostArea2D"]
+shape = SubResource( 9 )
+
+[node name="Shadow" type="Sprite" parent="MoveGhost3/Body"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 28 )
+
+[node name="Ghost" type="Sprite" parent="MoveGhost3/Body"]
+modulate = Color( 1, 1, 1, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 29 )
+
+[node name="Symbol" type="Label" parent="MoveGhost3/Body/Ghost"]
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 10 )
+text = "3"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveGhost2" type="Node2D" parent="."]
+position = Vector2( 104, 168 )
+script = ExtResource( 27 )
+moveTime = 1
+
+[node name="MoveLocation" type="Node2D" parent="MoveGhost2"]
+position = Vector2( 48, 0 )
+
+[node name="Tween" type="Tween" parent="MoveGhost2"]
+
+[node name="Body" type="Node2D" parent="MoveGhost2"]
+
+[node name="GhostArea2D" type="Area2D" parent="MoveGhost2/Body"]
+script = ExtResource( 26 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="MoveGhost2/Body/GhostArea2D"]
+shape = SubResource( 9 )
+
+[node name="Shadow" type="Sprite" parent="MoveGhost2/Body"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 28 )
+
+[node name="Ghost" type="Sprite" parent="MoveGhost2/Body"]
+modulate = Color( 1, 1, 1, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 29 )
+
+[node name="Symbol" type="Label" parent="MoveGhost2/Body/Ghost"]
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 10 )
+text = "2"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BadGhost" type="Node2D" parent="."]
+position = Vector2( 120, 40 )
+script = ExtResource( 30 )
+moveTime = 1
+
+[node name="MoveLocation" type="Node2D" parent="BadGhost"]
+position = Vector2( 80, 0 )
+
+[node name="Tween" type="Tween" parent="BadGhost"]
+
+[node name="Body" type="Node2D" parent="BadGhost"]
+
+[node name="GhostArea2D" type="Area2D" parent="BadGhost/Body"]
+script = ExtResource( 26 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="BadGhost/Body/GhostArea2D"]
+shape = SubResource( 11 )
+
+[node name="Shadow" type="Sprite" parent="BadGhost/Body"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 28 )
+
+[node name="Ghost" type="Sprite" parent="BadGhost/Body"]
+modulate = Color( 0.988235, 0.2, 0.2, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 29 )
+
+[node name="Symbol" type="Label" parent="BadGhost/Body/Ghost"]
+visible = false
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BadGhost2" type="Node2D" parent="."]
+position = Vector2( 168, 72 )
+script = ExtResource( 30 )
+moveTime = 1
+
+[node name="MoveLocation" type="Node2D" parent="BadGhost2"]
+position = Vector2( 0, 32 )
+
+[node name="Tween" type="Tween" parent="BadGhost2"]
+
+[node name="Body" type="Node2D" parent="BadGhost2"]
+
+[node name="GhostArea2D" type="Area2D" parent="BadGhost2/Body"]
+script = ExtResource( 26 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="BadGhost2/Body/GhostArea2D"]
+shape = SubResource( 11 )
+
+[node name="Shadow" type="Sprite" parent="BadGhost2/Body"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 28 )
+
+[node name="Ghost" type="Sprite" parent="BadGhost2/Body"]
+modulate = Color( 0.988235, 0.2, 0.2, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 29 )
+
+[node name="Symbol" type="Label" parent="BadGhost2/Body/Ghost"]
+visible = false
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
-margin_left = 200.0
-margin_top = 64.0
-margin_right = 255.0
-margin_bottom = 94.0
-custom_fonts/font = SubResource( 5 )
+visible = false
+margin_left = 184.0
+margin_right = 239.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 13 )
 text = "Four"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -264,4 +528,26 @@ __meta__ = {
 [connection signal="animation_finished" from="LavaTiles/LavaTile2/AnimatedSprite" to="LavaTiles/LavaTile2" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="body_entered" from="LavaTiles/LavaTile2/Area2D" to="LavaTiles/LavaTile2" method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="LavaTiles/LavaTile2/Timer" to="LavaTiles/LavaTile2" method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="LavaTiles/LavaTile3/AnimatedSprite" to="LavaTiles/LavaTile3" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="LavaTiles/LavaTile3/Area2D" to="LavaTiles/LavaTile3" method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="LavaTiles/LavaTile3/Timer" to="LavaTiles/LavaTile3" method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="LavaTiles/LavaTile4/AnimatedSprite" to="LavaTiles/LavaTile4" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="LavaTiles/LavaTile4/Area2D" to="LavaTiles/LavaTile4" method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="LavaTiles/LavaTile4/Timer" to="LavaTiles/LavaTile4" method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="LavaTiles/LavaTile5/AnimatedSprite" to="LavaTiles/LavaTile5" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="LavaTiles/LavaTile5/Area2D" to="LavaTiles/LavaTile5" method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="LavaTiles/LavaTile5/Timer" to="LavaTiles/LavaTile5" method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="LavaTiles/LavaTile6/AnimatedSprite" to="LavaTiles/LavaTile6" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="body_entered" from="LavaTiles/LavaTile6/Area2D" to="LavaTiles/LavaTile6" method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="LavaTiles/LavaTile6/Timer" to="LavaTiles/LavaTile6" method="_on_Timer_timeout"]
 [connection signal="tween_completed" from="player/Tween" to="player" method="_on_Tween_tween_completed"]
+[connection signal="tween_all_completed" from="MoveGhost/Tween" to="MoveGhost" method="_on_Tween_tween_all_completed"]
+[connection signal="body_entered" from="MoveGhost/Body/GhostArea2D" to="MoveGhost/Body/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="tween_all_completed" from="MoveGhost3/Tween" to="MoveGhost3" method="_on_Tween_tween_all_completed"]
+[connection signal="body_entered" from="MoveGhost3/Body/GhostArea2D" to="MoveGhost3/Body/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="tween_all_completed" from="MoveGhost2/Tween" to="MoveGhost2" method="_on_Tween_tween_all_completed"]
+[connection signal="body_entered" from="MoveGhost2/Body/GhostArea2D" to="MoveGhost2/Body/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="tween_all_completed" from="BadGhost/Tween" to="BadGhost" method="_on_Tween_tween_all_completed"]
+[connection signal="body_entered" from="BadGhost/Body/GhostArea2D" to="BadGhost" method="_on_GhostArea2D_body_entered"]
+[connection signal="tween_all_completed" from="BadGhost2/Tween" to="BadGhost2" method="_on_Tween_tween_all_completed"]
+[connection signal="body_entered" from="BadGhost2/Body/GhostArea2D" to="BadGhost2" method="_on_GhostArea2D_body_entered"]

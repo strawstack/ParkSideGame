@@ -11,6 +11,8 @@ var isAnimating
 
 signal text_complete
 
+var isActive = false
+
 func _ready():
 	$nextLabel.visible = false
 	visible = false
@@ -40,6 +42,8 @@ func nextSentance():
 		$CharacterTimer.start()
 
 func _process(delta):
+	if not isActive:
+		return
 	if Input.is_action_just_pressed("ui_accept"):
 		if isAnimating:
 			$CharacterTimer.stop()

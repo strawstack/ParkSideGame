@@ -75,6 +75,7 @@ func nextSpeaker():
 	$TextBox.showText(textList[textIndex])
 
 func _fade_to_white_complete():
+	$TextBox.isActive = true
 	nextSpeaker()
 
 func _on_TextBox_text_complete():
@@ -82,4 +83,6 @@ func _on_TextBox_text_complete():
 	if textIndex < textList.size():
 		nextSpeaker()
 	else:
+		$Player_arrow.visible = false
+		$Grand_arrow.visible = false
 		gc.changeScene("res://levels/one.tscn")

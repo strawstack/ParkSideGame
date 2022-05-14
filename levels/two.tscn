@@ -158,7 +158,7 @@ radius = 8.0
 size = 24
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=10]
 resource_name = "GhostBob"
 length = 2.0
 loop = true
@@ -175,7 +175,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -10 ), Vector2( 0, -15 ), Vector2( 0, -10 ) ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=11]
 resource_name = "ShadowPulse"
 length = 2.0
 loop = true
@@ -192,10 +192,10 @@ tracks/0/keys = {
 "values": [ Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=20]
+[sub_resource type="CircleShape2D" id=12]
 radius = 8.0
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=13]
 size = 6
 font_data = ExtResource( 1 )
 
@@ -233,15 +233,14 @@ tracks/0/keys = {
 "values": [ Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=12]
+[sub_resource type="CircleShape2D" id=16]
 radius = 8.0
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=17]
 size = 6
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=16]
-resource_name = "GhostBob"
+[sub_resource type="Animation" id=18]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -257,8 +256,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -10 ), Vector2( 0, -15 ), Vector2( 0, -10 ) ]
 }
 
-[sub_resource type="Animation" id=17]
-resource_name = "ShadowPulse"
+[sub_resource type="Animation" id=19]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -352,6 +350,7 @@ position = Vector2( 8, 0 )
 shape = SubResource( 8 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 184.0
 margin_right = 239.0
 margin_bottom = 30.0
@@ -367,17 +366,17 @@ script = ExtResource( 20 )
 
 [node name="GhostBob" type="AnimationPlayer" parent="Ghost"]
 autoplay = "GhostBob"
-anims/GhostBob = SubResource( 18 )
+anims/GhostBob = SubResource( 10 )
 
 [node name="ShadowPulse" type="AnimationPlayer" parent="Ghost"]
 autoplay = "ShadowPulse"
-anims/ShadowPulse = SubResource( 19 )
+anims/ShadowPulse = SubResource( 11 )
 
 [node name="GhostArea2D" type="Area2D" parent="Ghost"]
 script = ExtResource( 24 )
 
 [node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="Ghost/GhostArea2D"]
-shape = SubResource( 20 )
+shape = SubResource( 12 )
 
 [node name="Shadow" type="Sprite" parent="Ghost"]
 modulate = Color( 1, 1, 1, 0.313726 )
@@ -395,7 +394,7 @@ margin_left = -8.0
 margin_top = -5.0
 margin_right = 8.0
 margin_bottom = 3.0
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 13 )
 text = "1"
 align = 1
 __meta__ = {
@@ -418,7 +417,7 @@ anims/ShadowPulse = SubResource( 15 )
 script = ExtResource( 24 )
 
 [node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="Ghost2/GhostArea2D"]
-shape = SubResource( 12 )
+shape = SubResource( 16 )
 
 [node name="Shadow" type="Sprite" parent="Ghost2"]
 modulate = Color( 1, 1, 1, 0.313726 )
@@ -436,7 +435,7 @@ margin_left = -8.0
 margin_top = -5.0
 margin_right = 8.0
 margin_bottom = 3.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 17 )
 text = "2"
 align = 1
 __meta__ = {
@@ -449,17 +448,17 @@ script = ExtResource( 20 )
 
 [node name="GhostBob" type="AnimationPlayer" parent="Ghost3"]
 autoplay = "GhostBob"
-anims/GhostBob = SubResource( 16 )
+anims/GhostBob = SubResource( 18 )
 
 [node name="ShadowPulse" type="AnimationPlayer" parent="Ghost3"]
 autoplay = "ShadowPulse"
-anims/ShadowPulse = SubResource( 17 )
+anims/ShadowPulse = SubResource( 19 )
 
 [node name="GhostArea2D" type="Area2D" parent="Ghost3"]
 script = ExtResource( 24 )
 
 [node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="Ghost3/GhostArea2D"]
-shape = SubResource( 12 )
+shape = SubResource( 16 )
 
 [node name="Shadow" type="Sprite" parent="Ghost3"]
 modulate = Color( 1, 1, 1, 0.313726 )
@@ -477,7 +476,7 @@ margin_left = -8.0
 margin_top = -5.0
 margin_right = 8.0
 margin_bottom = 3.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 17 )
 text = "3"
 align = 1
 __meta__ = {

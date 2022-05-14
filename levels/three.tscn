@@ -326,6 +326,7 @@ position = Vector2( 8, 0 )
 shape = SubResource( 6 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 88.0
 margin_top = 160.0
 margin_right = 155.0

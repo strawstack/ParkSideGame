@@ -283,6 +283,7 @@ position = Vector2( 8, 0 )
 texture = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 128.0
 margin_top = 96.0
 margin_right = 212.0
@@ -300,7 +301,7 @@ position = Vector2( 200, -104 )
 texture = ExtResource( 27 )
 
 [node name="player" type="KinematicBody2D" parent="."]
-position = Vector2( 120, -56 )
+position = Vector2( 168, 168 )
 script = ExtResource( 12 )
 
 [node name="Camera2D" type="Camera2D" parent="player"]

@@ -57,6 +57,7 @@ func _on_Area2D_body_entered(body):
 	gc.toggleCanvasLayer(false)
 	$playerArrow.set_position(Vector2($player.get_position().x, $playerArrow.get_position().y))
 	$playerArrow.visible = true
+	$CanvasLayer/TextBox.isActive = true
 	toggleArrow()
 	nextSpeaker()
 
@@ -77,3 +78,6 @@ func _on_TextBox_text_complete():
 		$grandArrow.visible = false
 		$Grand.visible = false
 		gc.toggleCanvasLayer(true)
+		var text = "Exit at the top."
+		gc.setPlayerTask(1, text)
+		gc.setPlayerTask(2, text)
