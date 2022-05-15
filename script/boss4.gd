@@ -46,9 +46,6 @@ func _ready():
 	gc.setCurrentScene(self)
 	$YSort/player.blockInput = true
 
-	# debug
-	_fade_to_white_complete()
-
 func _fade_to_white_complete():
 	$TextBox.isActive = true
 	$TextBox.visible = true

@@ -5,6 +5,9 @@ var gc
 var ghostIndex = 0
 var ghostList = ["1", "2", "3", "4"]
 
+var ghostNodeList
+var ghostAreaList
+
 func _ready():
 	gc = get_tree().get_root().get_node("main")
 	gc.setWallMap($Walls)
@@ -15,6 +18,8 @@ func _ready():
 	gc.connect("fade_to_white_complete", self, "_fade_to_white_complete")
 	gc.showArrow_p1(false)
 	gc.showArrow_p2(false)
+	ghostNodeList = [$Ghost, $Ghost2, $Ghost3, $Ghost4]
+	ghostAreaList = [$Ghost/GhostArea2D, $Ghost2/GhostArea2D, $Ghost3/GhostArea2D, $Ghost4/GhostArea2D]
 
 func _fade_to_white_complete():
 	$Timer.start()
@@ -22,12 +27,10 @@ func _fade_to_white_complete():
 func nextGhost(ghostSymbol):
 	if ghostList[ghostIndex] != ghostSymbol:
 		ghostIndex = 0
-		$MoveGhost.visible = true
-		$MoveGhost/Body/GhostArea2D.set_monitoring(true)
-		$MoveGhost2.visible = true
-		$MoveGhost2/Body/GhostArea2D.set_monitoring(true)
-		$MoveGhost3.visible = true
-		$MoveGhost3/Body/GhostArea2D.set_monitoring(true)
+		for ghost in ghostNodeList:
+			ghost.visible = true
+		for ghost in ghostAreaList:
+			ghost.set_monitoring(true)
 		return false
 	
 	ghostIndex += 1
@@ -41,6 +44,8 @@ func playerDies():
 	gc.changeScene("res://levels/boss3.tscn")
 
 func sceneComplete():
+	gc.showArrow_p1(false)
+	gc.showArrow_p2(false)
 	gc.changeScene("res://levels/boss4.tscn")
 
 func playerBlock(value):

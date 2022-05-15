@@ -5,6 +5,8 @@ var gc
 var ghostIndex = 0
 var ghostList = ["1", "2", "3", "4"]
 
+var isEnding = false
+
 func _ready():
 	gc = get_tree().get_root().get_node("main")
 	gc.setWallMap($Walls)
@@ -20,23 +22,27 @@ func _fade_to_white_complete():
 func nextGhost(ghostSymbol):
 	if ghostList[ghostIndex] != ghostSymbol:
 		ghostIndex = 0
-		$MoveGhost.visible = true
-		$MoveGhost/Body/GhostArea2D.set_monitoring(true)
-		$MoveGhost2.visible = true
-		$MoveGhost2/Body/GhostArea2D.set_monitoring(true)
-		$MoveGhost3.visible = true
-		$MoveGhost3/Body/GhostArea2D.set_monitoring(true)
+		$Ghost.visible = true
+		$Ghost/GhostArea2D.set_monitoring(true)
+		$Ghost2.visible = true
+		$Ghost2/GhostArea2D.set_monitoring(true)
+		$Ghost3.visible = true
+		$Ghost3/GhostArea2D.set_monitoring(true)
+		$Ghost4.visible = true
+		$Ghost4/GhostArea2D.set_monitoring(true)
 		return false
 	
 	ghostIndex += 1
 	
 	if ghostIndex == ghostList.size():
+		isEnding = true
 		sceneComplete()
 	
 	return true
 
 func playerDies():
-	gc.changeScene("res://levels/boss2.tscn")
+	if not isEnding:
+		gc.changeScene("res://levels/boss2.tscn")
 
 func sceneComplete():
 	gc.changeScene("res://levels/boss3.tscn")

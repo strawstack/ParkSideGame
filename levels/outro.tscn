@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://player_anim/player2.png" type="Texture" id=1]
 [ext_resource path="res://script/movement.gd" type="Script" id=2]
@@ -18,6 +18,11 @@
 [ext_resource path="res://script/TextBox.gd" type="Script" id=16]
 [ext_resource path="res://VarelaRound-Regular.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://script/outro.gd" type="Script" id=18]
+[ext_resource path="res://art/arrow.png" type="Texture" id=19]
+[ext_resource path="res://art/shadow.png" type="Texture" id=20]
+[ext_resource path="res://script/GhostArea2D.gd" type="Script" id=21]
+[ext_resource path="res://script/ghost.gd" type="Script" id=22]
+[ext_resource path="res://art/ghost.png" type="Texture" id=23]
 
 [sub_resource type="TileSet" id=1]
 0/name = "garden_autotile_no_flowers.png 0"
@@ -59,10 +64,10 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=15]
 radius = 7.11073
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=16]
 animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 7 ), ExtResource( 10 ) ],
 "loop": true,
@@ -85,12 +90,128 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Animation" id=9]
+resource_name = "Bob"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("GrandEvil:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 184, 104.5 ), Vector2( 184, 96 ), Vector2( 184, 104.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Grand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 216, 104.5 ), Vector2( 216, 96 ), Vector2( 216, 104.5 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "showEvil"
+tracks/0/type = "value"
+tracks/0/path = NodePath("GrandEvil:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "showGrand"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Grand:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="DynamicFont" id=5]
 size = 10
 font_data = ExtResource( 17 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 10
+font_data = ExtResource( 17 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "ghostEnter"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GhostContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -216, 88 ), Vector2( -104, 88 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "GhostBob"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10 ), Vector2( 0, -15 ), Vector2( 0, -10 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "ShadowPulse"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shadow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 8.0
+
+[sub_resource type="DynamicFont" id=13]
+size = 6
 font_data = ExtResource( 17 )
 
 [node name="outro" type="Node"]
@@ -119,7 +240,7 @@ position = Vector2( 184, 144.5 )
 texture = ExtResource( 15 )
 
 [node name="player" type="KinematicBody2D" parent="."]
-position = Vector2( 144, 144.5 )
+position = Vector2( 144, 136 )
 script = ExtResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="player"]
@@ -128,25 +249,38 @@ texture = ExtResource( 9 )
 shadow_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-shape = SubResource( 2 )
+shape = SubResource( 15 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="player"]
 position = Vector2( 0, -12 )
-frames = SubResource( 3 )
+frames = SubResource( 16 )
 animation = "idle"
 speed_scale = 0.5
 
 [node name="Tween" type="Tween" parent="player"]
 
+[node name="Bob" type="AnimationPlayer" parent="."]
+autoplay = "Bob"
+anims/Bob = SubResource( 9 )
+
+[node name="showEvil" type="AnimationPlayer" parent="."]
+anims/showEvil = SubResource( 8 )
+
 [node name="GrandEvil" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 184, 104.5 )
 texture = ExtResource( 14 )
 
+[node name="showGrand" type="AnimationPlayer" parent="."]
+anims/showGrand = SubResource( 7 )
+
 [node name="Grand" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 216, 104.5 )
 texture = ExtResource( 13 )
 
 [node name="TextBox" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 16 )
@@ -207,5 +341,203 @@ margin_bottom = 192.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="player_arrow" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+position = Vector2( 144, 88 )
+texture = ExtResource( 19 )
+
+[node name="grand_arrow" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+position = Vector2( 216, 88 )
+texture = ExtResource( 19 )
+
+[node name="evil_arrow" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+position = Vector2( 184, 88 )
+texture = ExtResource( 19 )
+
+[node name="ghostEnter" type="AnimationPlayer" parent="."]
+anims/ghostEnter = SubResource( 14 )
+
+[node name="GhostContainer" type="Node2D" parent="."]
+position = Vector2( -216, 88 )
+
+[node name="Ghost2" type="Node2D" parent="GhostContainer"]
+position = Vector2( 184, 40 )
+script = ExtResource( 22 )
+
+[node name="GhostBob" type="AnimationPlayer" parent="GhostContainer/Ghost2"]
+autoplay = "GhostBob"
+anims/GhostBob = SubResource( 10 )
+
+[node name="ShadowPulse" type="AnimationPlayer" parent="GhostContainer/Ghost2"]
+autoplay = "ShadowPulse"
+anims/ShadowPulse = SubResource( 11 )
+
+[node name="GhostArea2D" type="Area2D" parent="GhostContainer/Ghost2"]
+script = ExtResource( 21 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="GhostContainer/Ghost2/GhostArea2D"]
+shape = SubResource( 12 )
+
+[node name="Shadow" type="Sprite" parent="GhostContainer/Ghost2"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 20 )
+
+[node name="Ghost" type="Sprite" parent="GhostContainer/Ghost2"]
+modulate = Color( 1, 1, 1, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 23 )
+
+[node name="Symbol" type="Label" parent="GhostContainer/Ghost2/Ghost"]
+visible = false
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 13 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ghost3" type="Node2D" parent="GhostContainer"]
+position = Vector2( 200, 64 )
+script = ExtResource( 22 )
+
+[node name="GhostBob" type="AnimationPlayer" parent="GhostContainer/Ghost3"]
+autoplay = "GhostBob"
+anims/GhostBob = SubResource( 10 )
+
+[node name="ShadowPulse" type="AnimationPlayer" parent="GhostContainer/Ghost3"]
+autoplay = "ShadowPulse"
+anims/ShadowPulse = SubResource( 11 )
+
+[node name="GhostArea2D" type="Area2D" parent="GhostContainer/Ghost3"]
+script = ExtResource( 21 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="GhostContainer/Ghost3/GhostArea2D"]
+shape = SubResource( 12 )
+
+[node name="Shadow" type="Sprite" parent="GhostContainer/Ghost3"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 20 )
+
+[node name="Ghost" type="Sprite" parent="GhostContainer/Ghost3"]
+modulate = Color( 1, 1, 1, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 23 )
+
+[node name="Symbol" type="Label" parent="GhostContainer/Ghost3/Ghost"]
+visible = false
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 13 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ghost4" type="Node2D" parent="GhostContainer"]
+position = Vector2( 184, 64 )
+script = ExtResource( 22 )
+
+[node name="GhostBob" type="AnimationPlayer" parent="GhostContainer/Ghost4"]
+autoplay = "GhostBob"
+anims/GhostBob = SubResource( 10 )
+
+[node name="ShadowPulse" type="AnimationPlayer" parent="GhostContainer/Ghost4"]
+autoplay = "ShadowPulse"
+anims/ShadowPulse = SubResource( 11 )
+
+[node name="GhostArea2D" type="Area2D" parent="GhostContainer/Ghost4"]
+script = ExtResource( 21 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="GhostContainer/Ghost4/GhostArea2D"]
+shape = SubResource( 12 )
+
+[node name="Shadow" type="Sprite" parent="GhostContainer/Ghost4"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 20 )
+
+[node name="Ghost" type="Sprite" parent="GhostContainer/Ghost4"]
+modulate = Color( 1, 1, 1, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 23 )
+
+[node name="Symbol" type="Label" parent="GhostContainer/Ghost4/Ghost"]
+visible = false
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 13 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ghost" type="Node2D" parent="GhostContainer"]
+position = Vector2( 200, 40 )
+script = ExtResource( 22 )
+
+[node name="GhostBob" type="AnimationPlayer" parent="GhostContainer/Ghost"]
+autoplay = "GhostBob"
+anims/GhostBob = SubResource( 10 )
+
+[node name="ShadowPulse" type="AnimationPlayer" parent="GhostContainer/Ghost"]
+autoplay = "ShadowPulse"
+anims/ShadowPulse = SubResource( 11 )
+
+[node name="GhostArea2D" type="Area2D" parent="GhostContainer/Ghost"]
+script = ExtResource( 21 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="GhostContainer/Ghost/GhostArea2D"]
+shape = SubResource( 12 )
+
+[node name="Shadow" type="Sprite" parent="GhostContainer/Ghost"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 20 )
+
+[node name="Ghost" type="Sprite" parent="GhostContainer/Ghost"]
+modulate = Color( 1, 1, 1, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 23 )
+
+[node name="Symbol" type="Label" parent="GhostContainer/Ghost/Ghost"]
+visible = false
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 13 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="animation_finished" from="FadeInFromWhite" to="." method="_on_FadeInFromWhite_animation_finished"]
 [connection signal="tween_completed" from="player/Tween" to="player" method="_on_Tween_tween_completed"]
+[connection signal="text_complete" from="TextBox" to="." method="_on_TextBox_text_complete"]
 [connection signal="timeout" from="TextBox/CharacterTimer" to="TextBox" method="_on_CharacterTimer_timeout"]
+[connection signal="body_entered" from="GhostContainer/Ghost2/GhostArea2D" to="GhostContainer/Ghost2/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="body_entered" from="GhostContainer/Ghost3/GhostArea2D" to="GhostContainer/Ghost3/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="body_entered" from="GhostContainer/Ghost4/GhostArea2D" to="GhostContainer/Ghost4/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="body_entered" from="GhostContainer/Ghost/GhostArea2D" to="GhostContainer/Ghost/GhostArea2D" method="_on_GhostArea2D_body_entered"]

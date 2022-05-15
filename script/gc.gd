@@ -34,23 +34,25 @@ func _ready():
 
 func _process(delta):
 	var press = false
-	if Input.is_action_just_pressed("prev_scene"):
-		press = true
-		debug_index -= 1
-		
-	elif Input.is_action_just_pressed("next_scene"):
-		press = true
-		debug_index += 1
+	var debug = true
+	if debug:
+		if Input.is_action_just_pressed("prev_scene"):
+			press = true
+			debug_index -= 1
+			
+		elif Input.is_action_just_pressed("next_scene"):
+			press = true
+			debug_index += 1
 	
-	if press:
-		press = false
-		if debug_index > scene_list.size() - 1:
-			debug_index = scene_list.size() - 1
-		elif debug_index < 0:
-			debug_index = 0
-		
-		var isSlow = false
-		changeScene(scene_list[debug_index], isSlow)
+		if press:
+			press = false
+			if debug_index > scene_list.size() - 1:
+				debug_index = scene_list.size() - 1
+			elif debug_index < 0:
+				debug_index = 0
+			
+			var isSlow = false
+			changeScene(scene_list[debug_index], isSlow)
 
 func setWallMap(_wallMap):
 	wallMap = _wallMap

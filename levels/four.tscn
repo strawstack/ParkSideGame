@@ -297,6 +297,7 @@ speed_scale = 0.5
 [node name="Tween" type="Tween" parent="player"]
 
 [node name="Walls" type="TileMap" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.27451 )
 tile_set = SubResource( 8 )
 cell_size = Vector2( 16, 16 )

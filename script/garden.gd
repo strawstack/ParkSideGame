@@ -15,7 +15,7 @@ var textList = [
 	[
 		"Yes...",
 		"You see your great grandfather didn't run out of this house...",
-		"Your great grandfather BECAME this house. He is this house...",
+		"Your great grandfather BECAME this house...",
 		"The land he bought was cursed, and when he set foot on it...",
 		"He became the haunted mansion we are in right now!"
 	],
