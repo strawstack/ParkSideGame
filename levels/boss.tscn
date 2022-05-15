@@ -1,20 +1,701 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://VarelaRound-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://art/stone_rough.png" type="Texture" id=2]
+[ext_resource path="res://art/stone_grid.png" type="Texture" id=3]
+[ext_resource path="res://art/tile.png" type="Texture" id=4]
+[ext_resource path="res://art/books_auto_tile.png" type="Texture" id=5]
+[ext_resource path="res://art/garden_autotile.png" type="Texture" id=6]
+[ext_resource path="res://art/water_autotile.png" type="Texture" id=7]
+[ext_resource path="res://art/book_stair.png" type="Texture" id=8]
+[ext_resource path="res://script/GhostArea2D.gd" type="Script" id=9]
+[ext_resource path="res://script/ghost.gd" type="Script" id=10]
+[ext_resource path="res://art/ghost.png" type="Texture" id=11]
+[ext_resource path="res://art/shadow.png" type="Texture" id=12]
+[ext_resource path="res://player_anim/player7.png" type="Texture" id=13]
+[ext_resource path="res://script/movement.gd" type="Script" id=14]
+[ext_resource path="res://player_anim/player9.png" type="Texture" id=15]
+[ext_resource path="res://player_anim/player10.png" type="Texture" id=16]
+[ext_resource path="res://player_anim/player3.png" type="Texture" id=17]
+[ext_resource path="res://player_anim/player6.png" type="Texture" id=18]
+[ext_resource path="res://player_anim/player4.png" type="Texture" id=19]
+[ext_resource path="res://player_anim/player1.png" type="Texture" id=20]
+[ext_resource path="res://player_anim/player2.png" type="Texture" id=21]
+[ext_resource path="res://player_anim/player8.png" type="Texture" id=22]
+[ext_resource path="res://art/light.png" type="Texture" id=23]
+[ext_resource path="res://player_anim/boss.png" type="Texture" id=24]
+[ext_resource path="res://art/dark_mask.png" type="Texture" id=25]
+[ext_resource path="res://script/TextBox.gd" type="Script" id=26]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="TileSet" id=1]
+0/name = "stone_grid.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "stone_rough.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=3]
+0/name = "books_auto_tile.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 192, 64 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 1
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 144, Vector2( 0, 1 ), 146, Vector2( 0, 2 ), 18, Vector2( 0, 3 ), 16, Vector2( 1, 0 ), 176, Vector2( 1, 1 ), 178, Vector2( 1, 2 ), 50, Vector2( 1, 3 ), 48, Vector2( 2, 0 ), 184, Vector2( 2, 1 ), 186, Vector2( 2, 2 ), 58, Vector2( 2, 3 ), 56, Vector2( 3, 0 ), 152, Vector2( 3, 1 ), 154, Vector2( 3, 2 ), 26, Vector2( 3, 3 ), 24, Vector2( 4, 0 ), 187, Vector2( 4, 1 ), 434, Vector2( 4, 2 ), 182, Vector2( 4, 3 ), 250, Vector2( 5, 0 ), 440, Vector2( 5, 1 ), 510, Vector2( 5, 2 ), 447, Vector2( 5, 3 ), 62, Vector2( 6, 0 ), 248, Vector2( 6, 1 ), 507, Vector2( 6, 2 ), 255, Vector2( 6, 3 ), 59, Vector2( 7, 0 ), 190, Vector2( 7, 1 ), 218, Vector2( 7, 2 ), 155, Vector2( 7, 3 ), 442, Vector2( 8, 0 ), 432, Vector2( 8, 1 ), 438, Vector2( 8, 2 ), 446, Vector2( 8, 3 ), 54, Vector2( 9, 0 ), 506, Vector2( 9, 1 ), 254, Vector2( 9, 2 ), 511, Vector2( 9, 3 ), 63, Vector2( 10, 0 ), 504, Vector2( 10, 2 ), 443, Vector2( 10, 3 ), 191, Vector2( 11, 0 ), 216, Vector2( 11, 1 ), 251, Vector2( 11, 2 ), 219, Vector2( 11, 3 ), 27 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="TileSet" id=4]
+0/name = "garden_autotile.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 192, 64 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 1
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 144, Vector2( 0, 1 ), 146, Vector2( 0, 2 ), 18, Vector2( 0, 3 ), 16, Vector2( 1, 0 ), 176, Vector2( 1, 1 ), 178, Vector2( 1, 2 ), 50, Vector2( 1, 3 ), 48, Vector2( 2, 0 ), 184, Vector2( 2, 1 ), 186, Vector2( 2, 2 ), 58, Vector2( 2, 3 ), 56, Vector2( 3, 0 ), 152, Vector2( 3, 1 ), 154, Vector2( 3, 2 ), 26, Vector2( 3, 3 ), 24, Vector2( 4, 0 ), 187, Vector2( 4, 1 ), 434, Vector2( 4, 2 ), 182, Vector2( 4, 3 ), 250, Vector2( 5, 0 ), 440, Vector2( 5, 1 ), 510, Vector2( 5, 2 ), 447, Vector2( 5, 3 ), 62, Vector2( 6, 0 ), 248, Vector2( 6, 1 ), 507, Vector2( 6, 2 ), 255, Vector2( 6, 3 ), 59, Vector2( 7, 0 ), 190, Vector2( 7, 1 ), 218, Vector2( 7, 2 ), 155, Vector2( 7, 3 ), 442, Vector2( 8, 0 ), 432, Vector2( 8, 1 ), 438, Vector2( 8, 2 ), 446, Vector2( 8, 3 ), 54, Vector2( 9, 0 ), 506, Vector2( 9, 1 ), 254, Vector2( 9, 2 ), 511, Vector2( 9, 3 ), 63, Vector2( 10, 0 ), 504, Vector2( 10, 2 ), 443, Vector2( 10, 3 ), 191, Vector2( 11, 0 ), 216, Vector2( 11, 1 ), 251, Vector2( 11, 2 ), 219, Vector2( 11, 3 ), 27 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="TileSet" id=5]
+0/name = "water_autotile.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 192, 64 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 1
+0/autotile/bitmask_flags = [  ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "water_autotile.png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 192, 64 )
+1/tile_mode = 1
+1/autotile/bitmask_mode = 1
+1/autotile/bitmask_flags = [ Vector2( 0, 0 ), 144, Vector2( 0, 1 ), 146, Vector2( 0, 2 ), 18, Vector2( 0, 3 ), 16, Vector2( 1, 0 ), 176, Vector2( 1, 1 ), 178, Vector2( 1, 2 ), 50, Vector2( 1, 3 ), 48, Vector2( 2, 0 ), 184, Vector2( 2, 1 ), 186, Vector2( 2, 2 ), 58, Vector2( 2, 3 ), 56, Vector2( 3, 0 ), 152, Vector2( 3, 1 ), 154, Vector2( 3, 2 ), 26, Vector2( 3, 3 ), 24, Vector2( 4, 0 ), 187, Vector2( 4, 1 ), 434, Vector2( 4, 2 ), 182, Vector2( 4, 3 ), 250, Vector2( 5, 0 ), 440, Vector2( 5, 1 ), 510, Vector2( 5, 2 ), 447, Vector2( 5, 3 ), 62, Vector2( 6, 0 ), 248, Vector2( 6, 1 ), 507, Vector2( 6, 2 ), 255, Vector2( 6, 3 ), 59, Vector2( 7, 0 ), 190, Vector2( 7, 1 ), 218, Vector2( 7, 2 ), 155, Vector2( 7, 3 ), 442, Vector2( 8, 0 ), 432, Vector2( 8, 1 ), 438, Vector2( 8, 2 ), 446, Vector2( 8, 3 ), 54, Vector2( 9, 0 ), 506, Vector2( 9, 1 ), 254, Vector2( 9, 2 ), 511, Vector2( 9, 3 ), 63, Vector2( 10, 0 ), 504, Vector2( 10, 2 ), 443, Vector2( 10, 3 ), 191, Vector2( 11, 0 ), 216, Vector2( 11, 1 ), 251, Vector2( 11, 2 ), 219, Vector2( 11, 3 ), 27 ]
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 16, 16 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "water_autotile.png 2"
+2/texture = ExtResource( 7 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 192, 64 )
+2/tile_mode = 1
+2/autotile/bitmask_mode = 1
+2/autotile/bitmask_flags = [ Vector2( 0, 0 ), 144, Vector2( 0, 1 ), 146, Vector2( 0, 2 ), 18, Vector2( 0, 3 ), 16, Vector2( 1, 0 ), 176, Vector2( 1, 1 ), 178, Vector2( 1, 2 ), 50, Vector2( 1, 3 ), 48, Vector2( 2, 0 ), 184, Vector2( 2, 1 ), 186, Vector2( 2, 2 ), 58, Vector2( 2, 3 ), 56, Vector2( 3, 0 ), 152, Vector2( 3, 1 ), 154, Vector2( 3, 2 ), 26, Vector2( 3, 3 ), 24, Vector2( 4, 0 ), 187, Vector2( 4, 1 ), 434, Vector2( 4, 2 ), 182, Vector2( 4, 3 ), 250, Vector2( 5, 0 ), 440, Vector2( 5, 1 ), 510, Vector2( 5, 2 ), 447, Vector2( 5, 3 ), 62, Vector2( 6, 0 ), 248, Vector2( 6, 1 ), 507, Vector2( 6, 2 ), 255, Vector2( 6, 3 ), 59, Vector2( 7, 0 ), 190, Vector2( 7, 1 ), 218, Vector2( 7, 2 ), 155, Vector2( 7, 3 ), 442, Vector2( 8, 0 ), 432, Vector2( 8, 1 ), 438, Vector2( 8, 2 ), 446, Vector2( 8, 3 ), 54, Vector2( 9, 0 ), 506, Vector2( 9, 1 ), 254, Vector2( 9, 2 ), 511, Vector2( 9, 3 ), 63, Vector2( 10, 0 ), 504, Vector2( 10, 2 ), 443, Vector2( 10, 3 ), 191, Vector2( 11, 0 ), 216, Vector2( 11, 1 ), 251, Vector2( 11, 2 ), 219, Vector2( 11, 3 ), 27 ]
+2/autotile/icon_coordinate = Vector2( 0, 0 )
+2/autotile/tile_size = Vector2( 16, 16 )
+2/autotile/spacing = 0
+2/autotile/occluder_map = [  ]
+2/autotile/navpoly_map = [  ]
+2/autotile/priority_map = [  ]
+2/autotile/z_index_map = [  ]
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+
+[sub_resource type="Animation" id=7]
+resource_name = "GhostBob"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10 ), Vector2( 0, -15 ), Vector2( 0, -10 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "ShadowPulse"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shadow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 8.0
+
+[sub_resource type="DynamicFont" id=10]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=11]
+resource_name = "GhostBob"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10 ), Vector2( 0, -15 ), Vector2( 0, -10 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "ShadowPulse"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shadow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "GhostBob"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10 ), Vector2( 0, -15 ), Vector2( 0, -10 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "ShadowPulse"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shadow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "GhostBob"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ghost:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10 ), Vector2( 0, -15 ), Vector2( 0, -10 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "ShadowPulse"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shadow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 0.7, 0.7 ), Vector2( 0.9, 0.9 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=17]
+radius = 7.11073
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ ExtResource( 18 ), ExtResource( 13 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+} ]
+
+[sub_resource type="TileSet" id=6]
+0/name = "tile.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=19]
+size = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=21]
+resource_name = "show_boss"
+
+[sub_resource type="Animation" id=22]
+resource_name = "show_player"
+
 [node name="boss" type="Node"]
 
+[node name="StoneTilemap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 1, 0, 65549, 0, 0, 65550, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 1, 0, 196617, 0, 0, 196618, 1, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 1, 0, 327685, 1, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 1, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 1, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 1, 0, 458766, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 589829, 1, 0, 589830, 1, 0, 589831, 0, 0, 589832, 0, 0, 589833, 1, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 655365, 1, 0, 655366, 1, 0, 655367, 0, 0, 655368, 0, 0, 655369, 1, 0, 655370, 0, 0, 655371, 0, 0, 655372, 1, 0, 655373, 0, 0, 655374, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0 )
+
+[node name="Bookshelves" type="TileMap" parent="."]
+tile_set = SubResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 8, 0, 8, 9, 0, 10, 10, 0, 10, 11, 0, 11, 65544, 0, 65544, 65545, 0, 131081, 65546, 0, 131081, 65547, 0, 131083, 131080, 0, 196616, 131081, 0, 196617, 131082, 0, 196617, 131083, 0, 196619 )
+
+[node name="GardenTilemap" type="TileMap" parent="."]
+tile_set = SubResource( 4 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="Water" type="TileMap" parent="."]
+tile_set = SubResource( 5 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 5, 2, 1, 6, 2, 196610, 7, 2, 196611, 12, 2, 196609, 13, 2, 196610, 14, 2, 3, 65541, 2, 65536, 65550, 2, 65536, 131077, 2, 65536, 131086, 2, 65536, 196613, 2, 65536, 196622, 2, 65536, 262149, 2, 65536, 262158, 2, 65536, 327685, 2, 65536, 327694, 2, 65536, 393221, 2, 65536, 393230, 2, 65536, 458757, 2, 65536, 458766, 2, 65536, 524293, 2, 65536, 524302, 2, 65536, 589829, 2, 65536, 589838, 2, 65536, 655365, 2, 65536, 655374, 2, 65536, 720901, 2, 131073, 720902, 2, 196610, 720903, 2, 196610, 720904, 2, 196611, 720907, 2, 196609, 720908, 2, 196610, 720909, 2, 196610, 720910, 2, 131075 )
+
+[node name="BookStair" type="Node2D" parent="."]
+position = Vector2( 0, 5 )
+
+[node name="BookStair" type="Sprite" parent="BookStair"]
+position = Vector2( 168, 40 )
+texture = ExtResource( 8 )
+
+[node name="BookStair2" type="Sprite" parent="BookStair"]
+position = Vector2( 184, 40 )
+texture = ExtResource( 8 )
+
+[node name="BookStair3" type="Sprite" parent="BookStair"]
+position = Vector2( 136, 40 )
+texture = ExtResource( 8 )
+
+[node name="BookStair4" type="Sprite" parent="BookStair"]
+position = Vector2( 152, 40 )
+texture = ExtResource( 8 )
+
+[node name="EvilGrand" type="Sprite" parent="."]
+position = Vector2( 160, 16 )
+texture = ExtResource( 24 )
+
+[node name="Ghost" type="Node2D" parent="."]
+position = Vector2( 136, 40 )
+script = ExtResource( 10 )
+
+[node name="GhostBob" type="AnimationPlayer" parent="Ghost"]
+autoplay = "GhostBob"
+anims/GhostBob = SubResource( 7 )
+
+[node name="ShadowPulse" type="AnimationPlayer" parent="Ghost"]
+autoplay = "ShadowPulse"
+anims/ShadowPulse = SubResource( 8 )
+
+[node name="GhostArea2D" type="Area2D" parent="Ghost"]
+script = ExtResource( 9 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="Ghost/GhostArea2D"]
+shape = SubResource( 9 )
+
+[node name="Shadow" type="Sprite" parent="Ghost"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 12 )
+
+[node name="Ghost" type="Sprite" parent="Ghost"]
+modulate = Color( 0.988235, 0.2, 0.2, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 11 )
+
+[node name="Symbol" type="Label" parent="Ghost/Ghost"]
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 10 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ghost2" type="Node2D" parent="."]
+position = Vector2( 152, 40 )
+script = ExtResource( 10 )
+
+[node name="GhostBob" type="AnimationPlayer" parent="Ghost2"]
+autoplay = "GhostBob"
+anims/GhostBob = SubResource( 11 )
+
+[node name="ShadowPulse" type="AnimationPlayer" parent="Ghost2"]
+autoplay = "ShadowPulse"
+anims/ShadowPulse = SubResource( 12 )
+
+[node name="GhostArea2D" type="Area2D" parent="Ghost2"]
+script = ExtResource( 9 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="Ghost2/GhostArea2D"]
+shape = SubResource( 9 )
+
+[node name="Shadow" type="Sprite" parent="Ghost2"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 12 )
+
+[node name="Ghost" type="Sprite" parent="Ghost2"]
+modulate = Color( 0.988235, 0.2, 0.2, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 11 )
+
+[node name="Symbol" type="Label" parent="Ghost2/Ghost"]
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 10 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ghost3" type="Node2D" parent="."]
+position = Vector2( 168, 40 )
+script = ExtResource( 10 )
+
+[node name="GhostBob" type="AnimationPlayer" parent="Ghost3"]
+autoplay = "GhostBob"
+anims/GhostBob = SubResource( 13 )
+
+[node name="ShadowPulse" type="AnimationPlayer" parent="Ghost3"]
+autoplay = "ShadowPulse"
+anims/ShadowPulse = SubResource( 14 )
+
+[node name="GhostArea2D" type="Area2D" parent="Ghost3"]
+script = ExtResource( 9 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="Ghost3/GhostArea2D"]
+shape = SubResource( 9 )
+
+[node name="Shadow" type="Sprite" parent="Ghost3"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 12 )
+
+[node name="Ghost" type="Sprite" parent="Ghost3"]
+modulate = Color( 0.988235, 0.2, 0.2, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 11 )
+
+[node name="Symbol" type="Label" parent="Ghost3/Ghost"]
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 10 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ghost4" type="Node2D" parent="."]
+position = Vector2( 184, 40 )
+script = ExtResource( 10 )
+
+[node name="GhostBob" type="AnimationPlayer" parent="Ghost4"]
+autoplay = "GhostBob"
+anims/GhostBob = SubResource( 15 )
+
+[node name="ShadowPulse" type="AnimationPlayer" parent="Ghost4"]
+autoplay = "ShadowPulse"
+anims/ShadowPulse = SubResource( 16 )
+
+[node name="GhostArea2D" type="Area2D" parent="Ghost4"]
+script = ExtResource( 9 )
+
+[node name="Ghost_CollisionShape2D" type="CollisionShape2D" parent="Ghost4/GhostArea2D"]
+shape = SubResource( 9 )
+
+[node name="Shadow" type="Sprite" parent="Ghost4"]
+modulate = Color( 1, 1, 1, 0.313726 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 12 )
+
+[node name="Ghost" type="Sprite" parent="Ghost4"]
+modulate = Color( 0.988235, 0.2, 0.2, 0.823529 )
+position = Vector2( 0, -10 )
+texture = ExtResource( 11 )
+
+[node name="Symbol" type="Label" parent="Ghost4/Ghost"]
+modulate = Color( 0.298039, 0.498039, 0.141176, 0.784314 )
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 10 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player" type="KinematicBody2D" parent="."]
+position = Vector2( 152, 88 )
+script = ExtResource( 14 )
+
+[node name="Light2D" type="Light2D" parent="player"]
+visible = false
+texture = ExtResource( 23 )
+shadow_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource( 17 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="player"]
+position = Vector2( 0, -12 )
+frames = SubResource( 18 )
+animation = "idle"
+speed_scale = 0.5
+
+[node name="Tween" type="Tween" parent="player"]
+
+[node name="Walls" type="TileMap" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.27451 )
+tile_set = SubResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65541, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65550, 0, 0, 131077, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131086, 0, 0, 196613, 0, 0, 196622, 0, 0, 262149, 0, 0, 262158, 0, 0, 327685, 0, 0, 327694, 0, 0, 393221, 0, 0, 393230, 0, 0, 458757, 0, 0, 458766, 0, 0, 524293, 0, 0, 524302, 0, 0, 589829, 0, 0, 589838, 0, 0, 655365, 0, 0, 655374, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0 )
+
 [node name="Label" type="Label" parent="."]
-margin_left = 128.0
-margin_top = 64.0
-margin_right = 184.0
-margin_bottom = 94.0
-custom_fonts/font = SubResource( 1 )
+visible = false
+margin_left = 80.0
+margin_top = 160.0
+margin_right = 136.0
+margin_bottom = 190.0
+custom_fonts/font = SubResource( 2 )
 text = "Boss"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextBox" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterTimer" type="Timer" parent="TextBox"]
+wait_time = 0.04
+
+[node name="ColorRect_Border" type="ColorRect" parent="TextBox"]
+margin_left = 8.0
+margin_top = 112.0
+margin_right = 312.0
+margin_bottom = 184.0
+color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2_inner" type="ColorRect" parent="TextBox"]
+margin_left = 16.0
+margin_top = 120.0
+margin_right = 304.0
+margin_bottom = 176.0
+color = Color( 0.133333, 0.133333, 0.133333, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextBox"]
+margin_left = 20.0
+margin_top = 124.0
+margin_right = 300.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 19 )
+text = "Testing"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nextLabel" type="Label" parent="TextBox"]
+margin_left = 256.0
+margin_top = 160.0
+margin_right = 296.0
+margin_bottom = 173.0
+custom_fonts/font = SubResource( 20 )
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DarkMask" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DarkMask"]
+anims/show_boss = SubResource( 21 )
+anims/show_player = SubResource( 22 )
+
+[node name="DarkMask" type="Sprite" parent="DarkMask"]
+modulate = Color( 0.0666667, 0.0666667, 0.0666667, 0.47451 )
+position = Vector2( 152, 80 )
+texture = ExtResource( 25 )
+[connection signal="body_entered" from="Ghost/GhostArea2D" to="Ghost/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="body_entered" from="Ghost2/GhostArea2D" to="Ghost2/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="body_entered" from="Ghost3/GhostArea2D" to="Ghost3/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="body_entered" from="Ghost4/GhostArea2D" to="Ghost4/GhostArea2D" method="_on_GhostArea2D_body_entered"]
+[connection signal="tween_completed" from="player/Tween" to="player" method="_on_Tween_tween_completed"]
+[connection signal="timeout" from="TextBox/CharacterTimer" to="TextBox" method="_on_CharacterTimer_timeout"]
