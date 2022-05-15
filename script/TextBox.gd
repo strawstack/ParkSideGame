@@ -13,7 +13,10 @@ signal text_complete
 
 var isActive = false
 
+var gc
+
 func _ready():
+	gc = get_tree().get_root().get_node("main")
 	$nextLabel.visible = false
 	visible = false
 	isAnimating = false
@@ -22,7 +25,12 @@ func showText(_textList):
 	if isAnimating == false:
 		textList = _textList
 		textListIndex = 0
-		$Label.set_text(textList[textListIndex])
+		var element = textList[textListIndex]
+		if typeof(element) == TYPE_ARRAY:
+			$Label.set_text(element[0])
+			gc.customCall(element[1])
+		else:
+			$Label.set_text(element)
 		charVisible = 0
 		$Label.set_visible_characters(charVisible)
 		visible = true
@@ -35,7 +43,12 @@ func nextSentance():
 		visible = false
 		emit_signal("text_complete")
 	else:
-		$Label.set_text(textList[textListIndex])
+		var element = textList[textListIndex]
+		if typeof(element) == TYPE_ARRAY:
+			$Label.set_text(element[0])
+			gc.customCall(element[1])
+		else:
+			$Label.set_text(element)
 		charVisible = 0
 		$Label.set_visible_characters(charVisible)
 		isAnimating = true
@@ -48,7 +61,10 @@ func _process(delta):
 		if isAnimating:
 			$CharacterTimer.stop()
 			isAnimating = false
-			charVisible = textList[textListIndex].length()
+			var element = textList[textListIndex]
+			if typeof(element) == TYPE_ARRAY:
+				element = element[0]
+			charVisible = element.length()
 			$Label.set_visible_characters(charVisible)
 			promtNext()
 		else:
@@ -67,7 +83,10 @@ func promtNext():
 func _on_CharacterTimer_timeout():
 	charVisible += 1
 	$Label.set_visible_characters(charVisible)
-	if charVisible == textList[textListIndex].length():
+	var element = textList[textListIndex]
+	if typeof(element) == TYPE_ARRAY:
+		element = element[0]
+	if charVisible == element.length():
 		$CharacterTimer.stop()
 		isAnimating = false
 		promtNext()

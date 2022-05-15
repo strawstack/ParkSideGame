@@ -99,6 +99,10 @@ func changeScene(newScene, isSlow = true):
 func setCurrentScene(scene):
 	currentScene = scene
 
+func customCall(callName):
+	if currentScene != null:
+		currentScene.customCall(callName)
+
 func nextGhost(ghostSymbol):
 	if currentScene == null:
 		return false

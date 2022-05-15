@@ -35,7 +35,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 resource_name = "p1_arrow_move"
 loop = true
 tracks/0/type = "value"
@@ -51,7 +51,7 @@ tracks/0/keys = {
 "values": [ Vector2( 80, 72 ), Vector2( 72, 72 ), Vector2( 80, 72 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 resource_name = "p2_arrow_move"
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/p2_arrow:position")
@@ -66,16 +66,8 @@ tracks/0/keys = {
 "values": [ Vector2( 240, 72 ), Vector2( 248, 72 ), Vector2( 240, 72 ) ]
 }
 
-[sub_resource type="DynamicFont" id=3]
-size = 20
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 14
-font_data = ExtResource( 2 )
-
 [sub_resource type="DynamicFont" id=5]
-size = 10
+size = 20
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
@@ -83,6 +75,14 @@ size = 14
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=7]
+size = 10
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
 size = 10
 font_data = ExtResource( 2 )
 
@@ -98,8 +98,8 @@ anims/FadeToBlack = SubResource( 1 )
 anims/FadeToWhite = SubResource( 2 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/p1_arrow_move = SubResource( 8 )
-anims/p2_arrow_move = SubResource( 9 )
+anims/p1_arrow_move = SubResource( 3 )
+anims/p2_arrow_move = SubResource( 4 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
@@ -137,7 +137,7 @@ __meta__ = {
 [node name="p1" type="Label" parent="CanvasLayer/p1_container/container/p1"]
 margin_right = 80.0
 margin_bottom = 25.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "Player 1"
 align = 1
 __meta__ = {
@@ -157,7 +157,7 @@ __meta__ = {
 [node name="task" type="Label" parent="CanvasLayer/p1_container/container/task"]
 margin_right = 80.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 text = "Task"
 align = 1
 valign = 1
@@ -192,7 +192,7 @@ margin_top = 4.0
 margin_right = 76.0
 margin_bottom = 52.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "Move to the trigger area"
 autowrap = true
 __meta__ = {
@@ -212,7 +212,7 @@ __meta__ = {
 [node name="ctrls" type="Label" parent="CanvasLayer/p1_container/container/ctrls"]
 margin_right = 80.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "Controls"
 align = 1
 valign = 1
@@ -247,7 +247,7 @@ margin_top = 4.0
 margin_right = 76.0
 margin_bottom = 36.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 text = "W - up
 S - down"
 autowrap = true
@@ -279,7 +279,7 @@ __meta__ = {
 [node name="p2" type="Label" parent="CanvasLayer/p2_container/container/p2"]
 margin_right = 80.0
 margin_bottom = 25.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "Player 2"
 align = 1
 __meta__ = {
@@ -299,7 +299,7 @@ __meta__ = {
 [node name="task" type="Label" parent="CanvasLayer/p2_container/container/task"]
 margin_right = 80.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 text = "Task"
 align = 1
 valign = 1
@@ -334,7 +334,7 @@ margin_top = 4.0
 margin_right = 76.0
 margin_bottom = 52.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "Move to the trigger area"
 autowrap = true
 __meta__ = {
@@ -354,7 +354,7 @@ __meta__ = {
 [node name="ctrls" type="Label" parent="CanvasLayer/p2_container/container/ctrls"]
 margin_right = 80.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "Controls"
 align = 1
 valign = 1
@@ -389,7 +389,7 @@ margin_top = 4.0
 margin_right = 76.0
 margin_bottom = 36.0
 size_flags_vertical = 5
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 text = "left arrow
 right arrow"
 autowrap = true
