@@ -13,6 +13,13 @@ var blockInput = false
 var gc
 var wallTileMap
 
+var blockList = {
+	"up": false,
+	"right": false,
+	"down": false,
+	"left": false,
+}
+
 signal move_completed
 
 func _ready():
@@ -71,19 +78,19 @@ func _process(delta):
 	if not isMoving:
 		var anyAction = false
 		if not blockInput:
-			if Input.is_action_pressed("right"):
+			if Input.is_action_pressed("right") and not blockList.right:
 				anyAction = true
 				targetTile = moveRight(targetTile)
 				
-			if Input.is_action_pressed("left"):
+			if Input.is_action_pressed("left") and not blockList.left:
 				anyAction = true
 				targetTile = moveLeft(targetTile)
 
-			if Input.is_action_pressed("down"):
+			if Input.is_action_pressed("down") and not blockList.down:
 				anyAction = true
 				targetTile = moveDown(targetTile)
 
-			if Input.is_action_pressed("up"):
+			if Input.is_action_pressed("up") and not blockList.up:
 				anyAction = true
 				targetTile = moveUp(targetTile)
 

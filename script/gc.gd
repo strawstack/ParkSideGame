@@ -14,7 +14,11 @@ var scene_list = [
 	"res://levels/four.tscn",
 	"res://levels/five.tscn",
 	"res://levels/pool.tscn",
-	"res://levels/boss.tscn"
+	"res://levels/boss.tscn", # Talking
+	"res://levels/boss2.tscn", # Active
+	"res://levels/boss3.tscn", # Talking + One player frozen at a time
+	"res://levels/boss4.tscn", # Cutscene Grandfather sac. Player collects deed
+	"res://levels/outro.tscn" # Rip the deed, grass field, Credits
 ]
 
 var wallMap = null
@@ -77,6 +81,14 @@ func setPlayerTask(playerNumber, text):
 		label = get_node("CanvasLayer/p2_container/container/task_text/MarginContainer/task_text")
 	label.set_text(text)
 
+func showArrow_p1(value):
+	$AnimationPlayer2.play("p1_arrow_move")
+	$CanvasLayer/p1_arrow.visible = value
+
+func showArrow_p2(value):
+	$AnimationPlayer2.play("p2_arrow_move")
+	$CanvasLayer/p2_arrow.visible = value
+
 func changeScene(newScene, isSlow = true):
 	targetScene = newScene
 	if isSlow:
@@ -110,4 +122,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func toggleCanvasLayer(isShown):
 	for child in $CanvasLayer.get_children():
-		child.set_visible(isShown)
+		if child.name != "p1_arrow" and child.name != "p2_arrow":
+			child.set_visible(isShown)

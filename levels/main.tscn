@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://script/gc.gd" type="Script" id=1]
 [ext_resource path="res://VarelaRound-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://bensound-relaxing.ogg" type="AudioStream" id=3]
+[ext_resource path="res://art/arrow.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeToBlack"
@@ -32,6 +33,37 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "p1_arrow_move"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/p1_arrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 80, 72 ), Vector2( 72, 72 ), Vector2( 80, 72 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "p2_arrow_move"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/p2_arrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 240, 72 ), Vector2( 248, 72 ), Vector2( 240, 72 ) ]
 }
 
 [sub_resource type="DynamicFont" id=3]
@@ -64,6 +96,10 @@ volume_db = 1.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeToBlack = SubResource( 1 )
 anims/FadeToWhite = SubResource( 2 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/p1_arrow_move = SubResource( 8 )
+anims/p2_arrow_move = SubResource( 9 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
@@ -360,6 +396,20 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="p1_arrow" type="Sprite" parent="CanvasLayer"]
+visible = false
+modulate = Color( 0.968627, 1, 0, 1 )
+position = Vector2( 80, 72 )
+rotation = 1.5708
+texture = ExtResource( 4 )
+
+[node name="p2_arrow" type="Sprite" parent="CanvasLayer"]
+visible = false
+modulate = Color( 0.968627, 1, 0, 1 )
+position = Vector2( 240, 72 )
+rotation = -1.5708
+texture = ExtResource( 4 )
 
 [node name="CurrentLevel" type="Node2D" parent="."]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
