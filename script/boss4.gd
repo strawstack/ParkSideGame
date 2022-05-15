@@ -33,27 +33,6 @@ var textList = [
 	]
 ]
 
-# TODO
-
-# Show deed when GrandEvil refers to it
-# At end of dialogue, fade in line of bad ghosts
-# Advance slightly and stop
-# Grand appears, says dialogue with highlight
-# Grand kicks GrandEvil, Sacs to kill ghost
-	# Says line of dialogue like "go get the deed" 
-# Player can run to get the deed
-# Deed rips on screen
-# Flash white, then fade white, show scene
-# Everything fades out to a grass field with two graves
-# Grand appears above grave says dialogue
-# GrandEvil appears "look out", but actally he's not harmful
-# All three talk and the end is peaceful
-# Player: "I still don't have a house again"
-# GrandEvil: "We can build a new house with a little help from my friends" - ghost slide on screen
-# Grand + all: Ha Ha Ha Ha...
-
-# Credits
-
 var gc
 
 var shakeOn = false
